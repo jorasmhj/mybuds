@@ -12,7 +12,6 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-devkit/build-angular": "~0.6.8",
     "@angular/cli": "~6.0.8",
     "@angular/animations": "^6.0.3",
     "@angular/common": "^6.0.3",
@@ -31,6 +30,7 @@
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~0.6.8",
     "@angular/language-service": "^6.0.3",
     "@types/express": "^4.16.0",
     "@types/jasmine": "~2.8.6",
@@ -51,6 +51,6 @@
   },
   "engines": {
     "node": "8.11.3",
-    "npm": "5.6.0"
+    "npm": "3.10.9"
   }
 }
