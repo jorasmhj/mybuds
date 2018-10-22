@@ -1,4 +1,4 @@
-import express, { static } from 'express';
+const express = require('express');
 const app = express();
 import path from 'path';
 
