@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 import path from 'path';
 
-app.use(static(__dirname + './dist/explorer'));
+app.use(static(__dirname + '/dist/explorer/'));
 
 app.listen(process.env.PORT || 8080);
 
