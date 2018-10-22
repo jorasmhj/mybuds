@@ -1,0 +1,73 @@
+.cover {
+  height: 310px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.cover-pic {
+  height: 250px;
+  border: 1px solid #eee;
+}
+
+.cover-menu {
+  height: 60px;
+  background: #fff;
+  border: 1px solid rgb(204, 204, 204);
+  position: relative;
+}
+
+.cover-img {
+  height: 100%;
+  width: 80%;
+  background-size: cover !important;
+}
+
+.pro-pic-holder2 {
+  width: 135px;
+  height: 135px;
+  position: absolute;
+  left: 10px;
+  background: url('https://mybuds.000webhostapp.com/uploads/avatars/1497092072.png');
+  background-size: contain;
+  bottom: 10px;
+  border-radius: 100%;
+}
+
+.username {
+  position: relative;
+  left: 141px;
+  width: 141%;
+  top: 40px;
+  color: #fff;
+}
+
+.username a {
+  color: #fff;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.cover-menu ul {
+  padding: 20px 0px;
+  margin-left: 135px;
+}
+
+.cover-menu ul li {
+  display: inline;
+  margin-right: -4px;
+  color: #bebebe;
+}
+
+.cover-menu ul li a {
+  color: #bebebe;
+  padding: 20px;
+  border-right: 1px solid #dddbdb;
+  transition: all 0.1s ease-in-out;
+}
+
+.lds-roller {
+  left: 50%;
+  top: 150px;
+  transform: translate(-50%);
+}

@@ -1,0 +1,46 @@
+<br>
+<br>
+<div class="row">
+  <div class="col-md-4 offset-4">
+    <ng-container *ngIf="loginError">
+      <div class="text-center">
+        <span class="text-danger">{{ loginError }}</span>
+      </div>
+    </ng-container>
+    <form #form="ngForm" (ngSubmit)="form.valid && login(form)">
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="text" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email"
+          #email="ngModel" [(ngModel)]="user.email" required email>
+        <ng-container *ngIf="email.invalid && (email.dirty || email.touched)">
+          <small *ngIf="email.errors?.required" class="form-text text-danger">Email
+            Required.</small>
+          <small *ngIf="email.errors?.pattern && email.touched" class="form-text text-danger">Must be email.</small>
+        </ng-container>
+
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="{{ showPassword }}" class="form-control" id="password" placeholder="Password" name="password"
+          #password="ngModel" [(ngModel)]="user.password" required minlength="5">
+        <ng-container *ngIf="password.invalid && (password.dirty || password.touched)">
+          <small *ngIf="password.errors?.required" class="form-text text-danger">Password
+            Required.</small>
+          <small *ngIf="password.errors?.minlength && password.touched" class="form-text text-danger">Password
+            must be atleast 5 character long.</small>
+        </ng-container>
+      </div>
+      <button type="submit" class="btn btn-primary myColor" [disabled]="form.invalid || submit">
+        <span *ngIf="!submit else loading">Login</span>
+        <ng-template #loading>
+          <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </ng-template>
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<br>
+<br>
+<div class="row">
+  <div class="col-md-6 offset-3">
+    <form #form="ngForm" (ngSubmit)="form.valid && signUp(form)">
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Your name" name="name" [(ngModel)]="user.name"
+          required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="Your email.." name="email" [(ngModel)]="user.email"
+          required email>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password" name="password" [(ngModel)]="user.password"
+          required minlength="5">
+      </div>
+      <div class="form-group">
+        <label for="password">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" name="conformPassword"
+          [(ngModel)]="conformPassword">
+      </div>
+      <button type="submit" class="btn btn-primary">Sign up</button>
+    </form>
+  </div>
+</div>

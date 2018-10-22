@@ -1,0 +1,14 @@
+<app-cover *ngIf="user else loading" [user]="user"></app-cover>
+
+<ng-template #loading>
+    <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</ng-template>
