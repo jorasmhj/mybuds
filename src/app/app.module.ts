@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -13,6 +14,8 @@ import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './user/dashboard/dashboard.component';
 import { AuthGuardService } from './auth-guard.service';
 import { CoverComponent } from './user/dashboard/cover/cover.component';
+import { PostFormComponent } from './post/post-form/post-form.component';
+import { PostsComponent } from './post/posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +25,15 @@ import { CoverComponent } from './user/dashboard/cover/cover.component';
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    CoverComponent
+    CoverComponent,
+    PostFormComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
+    MatSnackBarModule,
     HttpClientModule,
     RouterModule.forRoot(
       [
@@ -46,9 +52,14 @@ import { CoverComponent } from './user/dashboard/cover/cover.component';
           component: DashboardComponent,
           canActivate: [AuthGuardService]
         },
+        {
+          path: 'settings',
+          loadChildren: './user/settings/settings.module#SettingsModule'
+        },
 
         { path: '**', component: NotFoundComponent }
-      ]
+      ],
+      { preloadingStrategy: PreloadAllModules }
       // { enableTracing: true } // <-- debugging purposes only
     )
   ],

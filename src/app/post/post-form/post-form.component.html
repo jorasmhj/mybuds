@@ -1,0 +1,21 @@
+<div class="card">
+  <form #form="ngForm" (ngSubmit)="form.valid && share(form)">
+    <div class="black-text">
+      <span class="card-title">What's new</span>
+    </div>
+    <textarea placeholder="Share something..." cols="30" rows="5" [(ngModel)]="post.text" name="text" required></textarea>
+    <div class="card-action">
+      <button type="submit" class="btn btn-primary myColor" [disabled]="form.invalid || submit">
+        <span *ngIf="!submit else loading">Post</span>
+        <ng-template #loading>
+          <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </ng-template>
+      </button>
+    </div>
+  </form>
+</div>

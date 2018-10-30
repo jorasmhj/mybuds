@@ -15,9 +15,6 @@ export class UserService {
   get user() {
     let user = JSON.parse(localStorage.getItem('user'));
     if (user) return user;
-    this.me().subscribe(res => {
-      return (user = localStorage.setItem('user', JSON.stringify(res)));
-    });
   }
 
   constructor(private http: HttpClient) {}
@@ -42,7 +39,7 @@ export class UserService {
 
   loggedIn(data) {
     localStorage.setItem('token', data.access_token);
-    this.me();
+    //this.me();
   }
 
   getToken() {

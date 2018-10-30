@@ -1,4 +1,14 @@
-<app-cover *ngIf="user else loading" [user]="user"></app-cover>
+<ng-container *ngIf="user else loading">
+    <app-cover [user]="user"></app-cover>
+    <div class="posts">
+        <div class="grid-item">
+            <app-post-form *ngIf="user.id == userService.user.id"></app-post-form>
+        </div>
+        <app-posts></app-posts>
+    </div>
+</ng-container>
+
+
 
 <ng-template #loading>
     <div class="lds-roller">

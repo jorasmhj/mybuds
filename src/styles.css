@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'assets/css/loader.css';
+@import '~@angular/material/prebuilt-themes/purple-green.css';
 
 input.ng-touched.ng-invalid {
   border-bottom: 1px solid rgb(228, 34, 73) !important;
@@ -12,6 +13,13 @@ input.ng-touched.ng-invalid {
 
 body {
   overflow-x: hidden;
+  font-family: 'Inder', sans-serif;
+}
+
+textarea,
+input,
+.btn {
+  font-family: 'Inder', sans-serif;
 }
 
 input.ng-valid.ng-touched {
@@ -95,4 +103,19 @@ input[type='text'] {
   100% {
     transform: translate(19px, 0);
   }
+}
+
+.grid-item {
+  width: 33.33333333%;
+  float: left;
+}
+
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 85% !important;
+  }
+}
+
+.grid-item .card {
+  width: 95%;
 }

@@ -2,7 +2,8 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { moveIn, fallIn } from '../animation';
+import { moveIn } from '../animation';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private titleService: Title
+    private titleService: Title,
+    public snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -28,6 +30,12 @@ export class LoginComponent implements OnInit {
     if (this.userService.isLoggedIn()) {
       this.router.navigate(['/dashboard']);
     }
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000
+    });
   }
 
   toggleShowPassword() {
