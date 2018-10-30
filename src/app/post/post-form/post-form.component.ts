@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostFormComponent implements OnInit {
   post: any = {};
+  posting: boolean;
 
   constructor() {}
 
@@ -14,5 +15,10 @@ export class PostFormComponent implements OnInit {
 
   share() {
     this.post = {};
+    this.posting = true;
+    const s = this;
+    setTimeout(function() {
+      s.posting = false;
+    }, 2000);
   }
 }
