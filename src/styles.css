@@ -119,3 +119,9 @@ input[type='text'] {
 .grid-item .card {
   width: 95%;
 }
+
+.mat-snack-bar-container {
+  color: #fff !important;
+  min-width: 250px !important;
+  background: #d11f5d !important;
+}

@@ -4,7 +4,11 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material';
+import {
+  MatSnackBarModule,
+  MatMenuModule,
+  MatSidenavModule
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -31,6 +35,8 @@ import { PostsComponent } from './post/posts/posts.component';
   ],
   imports: [
     BrowserModule,
+    MatSidenavModule,
+    MatMenuModule,
     FormsModule,
     BrowserAnimationsModule,
     MatSnackBarModule,

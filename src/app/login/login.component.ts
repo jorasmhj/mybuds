@@ -34,7 +34,8 @@ export class LoginComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
-      duration: 2000
+      duration: 2000,
+      verticalPosition: 'top'
     });
   }
 
@@ -56,6 +57,8 @@ export class LoginComponent implements OnInit {
       },
       error => {
         this.loginError = error.error.error;
+        this.openSnackBar(error.error.error, 'Close');
+        this.user.password = null;
         this.submit = false;
       }
     );

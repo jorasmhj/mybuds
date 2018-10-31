@@ -8,9 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  open = 0;
+
   constructor(public userService: UserService, private router: Router) {}
 
   ngOnInit() {}
+
+  trigger() {
+    this.open = this.open === 1 ? 0 : 1;
+  }
 
   logout() {
     this.userService.logout();

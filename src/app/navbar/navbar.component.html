@@ -1,25 +1,38 @@
 <nav class="teal darken-1">
   <div class="nav-wrapper container">
     <a routerLink="" class="brand-logo">Explorer</a>
-    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <mat-sidenav-container class="side-trigger hide-on-large-only">
+      <mat-sidenav #sidenav class="example-sidenav">
+        <ul>
+          <li><a (click)="logout()">Logout</a></li>
+        </ul>
+      </mat-sidenav>
+
+      <div class="example-sidenav-content">
+        <button type="button" mat-button (click)="sidenav.open()" class="sidenav-trigger">
+          <i class="material-icons">menu</i>
+        </button>
+      </div>
+    </mat-sidenav-container>
+
     <ul class="right hide-on-med-and-down">
-      <ng-container *ngIf="!userService.isLoggedIn()">
+      <ng-container *ngIf="!userService.isLoggedIn() else logUser">
         <li routerLinkActive="active"><a [routerLink]="['/']">Login</a></li>
         <li routerLinkActive="active"><a [routerLink]="['signup']">SignUp</a></li>
       </ng-container>
-      <!-- Dropdown Trigger -->
-      <li *ngIf="userService.isLoggedIn()"><a class="dropdown-trigger" data-target="dropdown1">
-          {{ userService.user?.name | titlecase }}<i class="material-icons right">arrow_drop_down</i></a>
-        <ul id="dropdown1" class="dropdown-content">
-          <li><a href="#!">Profile</a></li>
-          <li><a (click)="logout()">Logout</a></li>
-        </ul>
-      </li>
+
+      <ng-template #logUser>
+        <li routerLinkActive="active" mat-button [matMenuTriggerFor]="menu" style="cursor:pointer">&nbsp;{{
+          userService.user?.name | titlecase
+          }}
+          <i class="material-icons right">arrow_drop_down</i>
+        </li>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item><a href="#!">Profile</a></button>
+          <button mat-menu-item><a (click)="logout()">Logout</a></button>
+        </mat-menu>
+      </ng-template>
     </ul>
   </div>
 </nav>
-<ul class="sidenav" id="mobile-demo" *ngIf="userService.isLoggedIn()">
-  <li><a href="#!">Profile</a></li>
-  <li><a (click)="logout()">Logout</a></li>
-</ul>
 <br>
