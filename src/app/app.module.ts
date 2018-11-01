@@ -4,6 +4,7 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgMasonryGridModule } from 'ng-masonry-grid';
 import {
   MatSnackBarModule,
   MatMenuModule,
@@ -20,6 +21,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { CoverComponent } from './user/dashboard/cover/cover.component';
 import { PostFormComponent } from './post/post-form/post-form.component';
 import { PostsComponent } from './post/posts/posts.component';
+import { SinglePostComponent } from './post/single-post/single-post.component';
 
 @NgModule({
   declarations: [
@@ -31,10 +33,12 @@ import { PostsComponent } from './post/posts/posts.component';
     DashboardComponent,
     CoverComponent,
     PostFormComponent,
-    PostsComponent
+    PostsComponent,
+    SinglePostComponent
   ],
   imports: [
     BrowserModule,
+    NgMasonryGridModule,
     MatSidenavModule,
     MatMenuModule,
     FormsModule,

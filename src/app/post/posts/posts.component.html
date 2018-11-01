@@ -1,3 +1,10 @@
-<div class="col m4" *ngFor="let post of posts; let i = index">
-  <app-post-form></app-post-form>
-</div>
+<ng-masonry-grid (onNgMasonryInit)="onNgMasonryInit($event)" [masonryOptions]="{ transitionDuration: '0.8s', gutter: 0 }"
+  [useAnimation]="true" [useImagesLoaded]="true" [scrollAnimationOptions]="{ animationEffect: 'effect-4', minDuration : 0.4, maxDuration : 0.7 }">
+  <!-- Masonry Grid Item -->
+  <ng-masonry-grid-item class="col m4 s12" id="{{'masonry-item-1'}}">
+    <app-post-form *ngIf="user?.id == userService?.user.id" (postEvent)="receivePost($event)"></app-post-form>
+  </ng-masonry-grid-item>
+  <ng-masonry-grid-item class="col m4 s12" id="{{'masonry-item-'+i}}" *ngFor="let post of posts; let i = index">
+    <app-single-post [post]='post'></app-single-post>
+  </ng-masonry-grid-item>
+</ng-masonry-grid>

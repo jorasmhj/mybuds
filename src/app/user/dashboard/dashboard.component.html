@@ -1,10 +1,7 @@
 <ng-container *ngIf="user else loading">
     <app-cover [user]="user"></app-cover>
     <div class="posts row">
-        <div class="col m4">
-            <app-post-form *ngIf="user.id == userService.user.id"></app-post-form>
-        </div>
-        <app-posts></app-posts>
+        <app-posts [user]='user'></app-posts>
     </div>
 </ng-container>
 

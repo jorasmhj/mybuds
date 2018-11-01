@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-post-form',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-form.component.css']
 })
 export class PostFormComponent implements OnInit {
+  @Output()
+  postEvent = new EventEmitter<any>();
   post: any = {};
   posting: boolean;
 
@@ -14,6 +16,7 @@ export class PostFormComponent implements OnInit {
   ngOnInit() {}
 
   share() {
+    this.postEvent.emit(this.post);
     this.post = {};
     this.posting = true;
     const s = this;

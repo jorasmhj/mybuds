@@ -18,7 +18,7 @@
         <div class="input-field col s12">
           <input type="{{ showPassword }}" id="password" name="password" #password="ngModel" [(ngModel)]="user.password"
             required minlength="5">
-          <label for="autocomplete-input">Password</label>
+          <label for="password">Password</label>
           <ng-container *ngIf="password.invalid && (password.dirty || password.touched)">
             <span *ngIf="password.errors?.required" class="red-text text-darken-1 helper-text">Password
               Required.</span>
