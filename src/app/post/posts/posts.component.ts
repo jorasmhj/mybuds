@@ -28,6 +28,7 @@ export class PostsComponent implements OnInit {
 
   reorderItems() {
     if (this._masonry) {
-        this._masonry.reOrderItems();
+      this._masonry.reOrderItems();
     }
+  }
 }
