@@ -13,7 +13,7 @@ export class PostsComponent implements OnInit {
   posts = [1, 2, 3, 4, 5, 6];
   _masonry: Masonry;
 
-  constructor(private userService: UserService) {}
+  constructor(public userService: UserService) {}
 
   ngOnInit() {}
 
