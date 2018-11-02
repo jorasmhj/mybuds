@@ -1,9 +1,13 @@
-<ng-container *ngIf="user else loading">
-    <app-cover [user]="user"></app-cover>
-    <div class="posts row">
-        <app-posts [user]='user'></app-posts>
+<div class="row">
+    <div class="col l12 m12 s12">
+        <ng-container *ngIf="user else loading">
+            <app-cover [user]="user"></app-cover>
+            <div class="posts row">
+                <app-posts [user]='user'></app-posts>
+            </div>
+        </ng-container>
     </div>
-</ng-container>
+</div>
 
 
 

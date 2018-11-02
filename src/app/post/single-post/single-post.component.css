@@ -1,0 +1,36 @@
+.post {
+  padding: 20px;
+}
+
+img.thumb {
+  width: 50px;
+  max-width: 50px !important;
+  height: 50px;
+}
+
+.post-user {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.post-time {
+  color: #949494;
+  font-size: 14px;
+}
+
+.thumb-holder {
+  position: relative;
+}
+
+.thumb-holder .noti {
+  position: absolute;
+  right: -15px;
+  bottom: 0;
+  background: #ffd400;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold;
+}

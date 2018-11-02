@@ -3,7 +3,7 @@
     <div class="black-text">
       <span class="card-title">What's new</span>
     </div>
-    <textarea placeholder="Share something..." cols="30" rows="5" [(ngModel)]="post.text" name="text" required></textarea>
+    <textarea placeholder="Share something..." cols="30" rows="5" [(ngModel)]="post.content" name="text" required></textarea>
     <div class="card-action">
       <button type="submit" class="btn btn-primary myColor" [disabled]="form.invalid">
         <span *ngIf="!posting else loading">Post</span>

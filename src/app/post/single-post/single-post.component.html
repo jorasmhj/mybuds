@@ -1,11 +1,22 @@
-<div class="card">
-  <div class="card-image">
-    <img src="https://materializecss.com/images/sample-1.jpg">
-    <span class="card-title">{{ post.text }}</span>
-    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+<div class="card post">
+  <div class="card-header row">
+    <div class="col s2">
+      <div class="thumb-holder">
+        <img alt="" class="circle responsive-img thumb" height="40" src="https://materializecss.com/images/yuna.jpg"
+          width="40">
+        <span class="noti">2</span>
+      </div>
+    </div>
+    <div class="col s10" style="padding-left: 20px;">
+      <span class="post-user">
+        Saroj Mhj
+      </span>
+      <div class="post-time">
+        <span>10:53PM - Mar 1, 2018</span>
+      </div>
+    </div>
   </div>
   <div class="card-content">
-    <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I
-      require little markup to use effectively.</p>
+    <p>{{ post.content }}</p>
   </div>
 </div>

@@ -22,6 +22,6 @@ export class PostFormComponent implements OnInit {
     const s = this;
     setTimeout(function() {
       s.posting = false;
-    }, 2000);
+    }, 500);
   }
 }

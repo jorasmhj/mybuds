@@ -1,8 +1,21 @@
 .cover {
-  height: 310px;
   margin-bottom: 10px;
   overflow: hidden;
   width: 100%;
+  height: 12em;
+}
+
+.img-holder {
+  height: 100%;
+  padding: 4px;
+  border-radius: 5px;
+  border: 8px solid orange;
+  float: left;
+}
+
+.user-img {
+  border: 1em solid;
+  height: 100%;
 }
 
 .cover-pic {
