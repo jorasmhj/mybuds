@@ -10,7 +10,7 @@ import { Masonry, MasonryOptions, MasonryGridItem } from 'ng-masonry-grid';
 export class PostsComponent implements OnInit {
   @Input()
   user;
-  posts = [1, 2];
+  posts = [1, 2, 3, 4, 5, 6];
   _masonry: Masonry;
 
   public myOptions: MasonryOptions = {
