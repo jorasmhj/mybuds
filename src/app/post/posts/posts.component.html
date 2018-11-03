@@ -3,7 +3,7 @@
   <div class="col m6 l4 s12 stamp">
     <app-post-form *ngIf="user?.id == userService?.user.id" (postEvent)="receivePost($event)"></app-post-form>
   </div>
-  <ng-masonry-grid-item class="col m6 l4 s12" id="{{'masonry-item-'+i}}" *ngFor="let post of posts; let i = index">
-    <app-single-post [post]='post'></app-single-post>
+  <ng-masonry-grid-item class="col m6 l4 s12 post-parent" id="{{'masonry-item-'+i}}" *ngFor="let post of posts; let i = index">
+    <app-single-post [post]='post' (postRemove)="removeItem($event)"></app-single-post>
   </ng-masonry-grid-item>
 </ng-masonry-grid>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { post } from 'selenium-webdriver/http';
 
 @Component({
@@ -9,9 +9,15 @@ import { post } from 'selenium-webdriver/http';
 export class SinglePostComponent implements OnInit {
   @Input()
   post;
+  @Output()
+  postRemove = new EventEmitter<any>();
   constructor() {}
 
   ngOnInit() {
     console.log(this.post);
+  }
+
+  removePost() {
+    this.postRemove.emit(this.post);
   }
 }

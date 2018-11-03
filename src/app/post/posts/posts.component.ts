@@ -34,19 +34,14 @@ export class PostsComponent implements OnInit {
   }
 
   removeItem($event: any) {
+    let id = this.posts.indexOf($event);
+    let a = document.getElementById('masonry-item-' + id);
     if (this._masonry) {
-      this._masonry
-        .removeItem($event.currentTarget) // removeItem() expects actual DOM (ng-masonry-grid-item element)
-        .subscribe((item: MasonryGridItem) => {
-          // item: removed grid item DOM from NgMasonryGrid
-          if (item) {
-            let id = item.element.getAttribute('id'); // Get id attribute and then find index
-            let index = id.split('-')[2];
-            // tslint:disable-next-line:max-line-length
-            // remove grid item from Masonry binding using index (because actual Masonry items order is different from this.masonryItems items)
-            this.posts.splice(index, 1);
-          }
-        });
+      this._masonry.removeItem(a).subscribe((item: MasonryGridItem) => {
+        if (item) {
+          this.posts.splice(id, 1);
+        }
+      });
     }
   }
 }
