@@ -24,4 +24,6 @@ li:hover {
 }
 
 .main-nav {
+  position: absolute;
+  top: 0;
 }
