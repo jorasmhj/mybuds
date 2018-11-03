@@ -10,16 +10,6 @@ button i {
   height: auto;
 }
 
-.side-trigger {
-  z-index: 0;
-  position: fixed;
-  left: 0;
-  margin: 0px;
-  background: none;
-  width: 100%;
-  height: 100%;
-}
-
 .mat-menu-item {
   padding: 0px;
 }
@@ -34,4 +24,6 @@ li:hover {
 }
 
 .main-nav {
+  position: relative;
+  top: 0;
 }
