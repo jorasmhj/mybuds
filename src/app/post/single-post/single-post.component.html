@@ -1,5 +1,5 @@
 <div class="card post">
-  <div class="card-header row">
+  <div class="row">
     <div class="col s2">
       <div class="thumb-holder">
         <img alt="" class="circle responsive-img thumb" height="40" src="https://materializecss.com/images/yuna.jpg"
@@ -18,5 +18,12 @@
         <p>{{ post.content }}</p>
       </div>
     </div>
+  </div>
+  <div class="post-options">
+    <i class="material-icons" mat-button [matMenuTriggerFor]="menu">more_vert</i>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
   </div>
 </div>

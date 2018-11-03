@@ -79,3 +79,39 @@
   border-right: 1px solid #dddbdb;
   transition: all 0.1s ease-in-out;
 }
+
+.user-info {
+  margin-left: 25px;
+  position: relative;
+  height: 100%;
+  width: 71.5%;
+}
+
+.user-overview {
+  position: absolute;
+  width: 100%;
+  font-weight: bold;
+  bottom: 20%;
+}
+
+.user-name {
+  font-size: 39px;
+  font-weight: bold;
+  padding: 0px;
+  margin: 0px;
+  line-height: 1;
+}
+
+.material-icons {
+  float: left;
+}
+
+.overview-item {
+  position: relative;
+}
+
+.overview-number {
+  font-size: 17px;
+  font-weight: bold;
+  padding-left: 5px;
+}

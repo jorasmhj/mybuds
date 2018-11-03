@@ -2,4 +2,54 @@
   <div class="img-holder">
     <img src="https://materializecss.com/images/yuna.jpg" alt="" class="user-img">
   </div>
+  <div class="user-info left">
+    <div>
+      <span class="user-name">
+        {{ user.name|titlecase }}
+      </span>
+    </div>
+    <div class="row user-overview">
+      <div class="col s4">
+        <div class="overview-item">
+          <div>
+            <i class="material-icons">photo_library</i>
+            <span class="overview-number">
+              14
+            </span>
+          </div>
+          <div>
+            <span>
+              Collection
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col s4">
+        <div class="overview-item">
+          <div>
+            <span class="overview-number">
+              315
+            </span>
+          </div>
+          <div>
+            <span>
+              Followers
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col s4">
+        <div class="overview-item">
+          <span class="overview-number">
+            923
+          </span>
+          <div>
+            <span>
+              Followings
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
