@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-post-form',
@@ -11,17 +12,16 @@ export class PostFormComponent implements OnInit {
   post: any = {};
   posting: boolean;
 
-  constructor() {}
+  constructor(private postService: PostService) {}
 
   ngOnInit() {}
 
   share() {
-    this.postEvent.emit(this.post);
-    this.post = {};
-    this.posting = true;
-    const s = this;
-    setTimeout(function() {
-      s.posting = false;
-    }, 500);
+    this.postService.createPost(this.post).subscribe(data => {
+      this.postEvent.emit(data);
+      this.posting = true;
+      this.post = {};
+      this.posting = false;
+    });
   }
 }

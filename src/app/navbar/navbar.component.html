@@ -1,8 +1,8 @@
-<nav class="teal darken-1 main-nav">
+<nav class="white main-nav">
   <div class="nav-wrapper container">
-    <a routerLink="" class="brand-logo">Explorer</a>
+    <a routerLink="" class="black-text brand-logo">Explorer</a>
 
-    <ul class="right hide-on-med-and-down">
+    <ul class="right hide-on-med-and-down black-text">
       <ng-container *ngIf="!userService.isLoggedIn() else logUser">
         <li routerLinkActive="active"><a [routerLink]="['/']">Login</a></li>
         <li routerLinkActive="active"><a [routerLink]="['signup']">SignUp</a></li>

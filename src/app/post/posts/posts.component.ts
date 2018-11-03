@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Masonry, MasonryOptions, MasonryGridItem } from 'ng-masonry-grid';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-posts',
@@ -10,7 +11,7 @@ import { Masonry, MasonryOptions, MasonryGridItem } from 'ng-masonry-grid';
 export class PostsComponent implements OnInit {
   @Input()
   user;
-  posts = [1, 2, 3, 4, 5, 6];
+  posts: any;
   _masonry: Masonry;
 
   public myOptions: MasonryOptions = {
@@ -19,9 +20,22 @@ export class PostsComponent implements OnInit {
     stamp: '.stamp'
   };
 
-  constructor(public userService: UserService) {}
+  constructor(
+    public userService: UserService,
+    private postService: PostService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getPost();
+  }
+
+  getPost() {
+    this.postService.getPost().subscribe(data => {
+      this.posts = data;
+      console.log(data);
+    });
+  }
+
   onNgMasonryInit($event: Masonry) {
     this._masonry = $event;
   }

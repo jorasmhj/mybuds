@@ -9,10 +9,10 @@
     </div>
     <div class="col s10" style="padding-left: 20px;">
       <span class="post-user">
-        Saroj Mhj
+        {{ post.user?.name }}
       </span>
       <div class="post-time">
-        <span>10:53PM - Mar 1, 2018</span>
+        <span>{{ post.created_at|date:'h:mma - MMM d, y' }}</span>
       </div>
       <div class="card-content">
         <p>{{ post.content }}</p>
@@ -22,7 +22,7 @@
   <div class="post-options" mat-button [matMenuTriggerFor]="menu">
     <i class="material-icons">more_vert</i>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>Edit</button>
+      <button mat-menu-item style="background:transparent">Edit</button>
       <button mat-menu-item (click)="removePost()">Remove</button>
     </mat-menu>
   </div>
