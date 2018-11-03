@@ -27,16 +27,15 @@
 }
 
 .sidenav-toggler i {
-  position: relative;
-  top: 20px;
+  position: fixed;
   z-index: 1;
-  left: 15px;
+  padding: 20px;
   color: #fff;
   cursor: pointer;
 }
 
 .main-content {
-  margin-top: 15px;
+  margin-top: 30px;
 }
 
 .mat-drawer {
@@ -44,4 +43,18 @@
   color: #000;
   width: 150px;
   box-shadow: 1px 2px 25px -5px #000;
+}
+
+li {
+  padding: 10px 0px;
+  border-bottom: 1px solid #ececec;
+  color: #000;
+}
+
+li:hover {
+  background: #ececec;
+}
+
+a {
+  cursor: pointer;
 }
