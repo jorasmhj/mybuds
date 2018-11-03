@@ -1,27 +1,14 @@
-<nav class="teal darken-1">
+<nav class="teal darken-1 main-nav">
   <div class="nav-wrapper container">
     <a routerLink="" class="brand-logo">Explorer</a>
-    <!-- <mat-sidenav-container class="side-trigger hide-on-large-only">
-      <mat-sidenav #sidenav class="example-sidenav">
-        <ul>
-          <li><a (click)="logout()">Logout</a></li>
-        </ul>
-      </mat-sidenav>
-
-      <div class="example-sidenav-content">
-        <button type="button" mat-button (click)="sidenav.open()" class="sidenav-trigger">
-          <i class="material-icons">menu</i>
-        </button>
-      </div>
-    </mat-sidenav-container> -->
 
     <ul class="right hide-on-med-and-down">
-      <ng-container *ngIf="!userService.isLoggedIn()">
+      <ng-container *ngIf="!userService.isLoggedIn() else logUser">
         <li routerLinkActive="active"><a [routerLink]="['/']">Login</a></li>
         <li routerLinkActive="active"><a [routerLink]="['signup']">SignUp</a></li>
       </ng-container>
 
-      <!-- <ng-template #logUser>
+      <ng-template #logUser>
         <li routerLinkActive="active" mat-button [matMenuTriggerFor]="menu" style="cursor:pointer">&nbsp;{{
           userService.user?.name | titlecase
           }}
@@ -31,8 +18,9 @@
           <button mat-menu-item><a href="#!">Profile</a></button>
           <button mat-menu-item><a (click)="logout()">Logout</a></button>
         </mat-menu>
-      </ng-template> -->
+      </ng-template>
     </ul>
   </div>
 </nav>
+<br>
 <br>

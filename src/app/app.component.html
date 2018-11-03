@@ -1,4 +1,18 @@
-<app-navbar></app-navbar>
-<div class="container">
-    <router-outlet></router-outlet>
-</div>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+        <ul class="center-align">
+            <li>Login</li>
+            <li>Login</li>
+        </ul>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div class="hide-on-large-only sidenav-toggler">
+            <i class="material-icons" mat-button (click)="sidenav.toggle()">menu</i>
+        </div>
+        <app-navbar></app-navbar>
+        <div class="container main-content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

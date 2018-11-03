@@ -32,3 +32,8 @@ button i {
 li:hover {
   background: #007b6f;
 }
+
+.main-nav {
+  position: fixed;
+  top: 0;
+}

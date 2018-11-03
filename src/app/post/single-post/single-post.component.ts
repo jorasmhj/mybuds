@@ -13,9 +13,7 @@ export class SinglePostComponent implements OnInit {
   postRemove = new EventEmitter<any>();
   constructor() {}
 
-  ngOnInit() {
-    console.log(this.post);
-  }
+  ngOnInit() {}
 
   removePost() {
     this.postRemove.emit(this.post);
