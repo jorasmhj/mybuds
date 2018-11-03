@@ -16,7 +16,7 @@
     </mat-sidenav-container> -->
 
     <ul class="right hide-on-med-and-down">
-      <ng-container *ngIf="!userService.isLoggedIn() else logUser">
+      <ng-container *ngIf="!userService.isLoggedIn()">
         <li routerLinkActive="active"><a [routerLink]="['/']">Login</a></li>
         <li routerLinkActive="active"><a [routerLink]="['signup']">SignUp</a></li>
       </ng-container>
