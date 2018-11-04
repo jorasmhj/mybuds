@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   @HostBinding('@moveIn')
   user: any = {};
   loginError: string;
-  submit = false;
+  submit = true;
   showPassword = 'password';
 
   constructor(

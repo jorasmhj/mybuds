@@ -8,10 +8,10 @@ import { stringify } from '@angular/compiler/src/util';
 })
 export class UserService {
   private iss = {
-    login: 'https://herokuapp.com/api/auth/login',
-    signup: 'https://herokuapp.com/api/auth/signup'
+    login: 'https://mybuds.herokuapp.com/api/auth/login',
+    signup: 'https://mybuds.herokuapp.com/api/auth/signup'
   };
-  private baseUrl = 'https://herokuapp.com/api/auth/';
+  private baseUrl = 'https://mybuds.herokuapp.com/api/auth/';
   get user() {
     let user = JSON.parse(localStorage.getItem('user'));
     if (user) return user;
