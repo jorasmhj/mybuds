@@ -40,12 +40,12 @@ input[type='text'] {
 }
 
 .myColor {
-  /* background: rgb(0, 108, 112) !important; */
+  background: rgb(0, 0, 0) !important;
 }
 
 .text-myColor,
 .active > .nav-link {
-  color: rgb(0, 108, 112) !important;
+  color: rgb(0, 0, 0) !important;
 }
 
 .btn-primary {
