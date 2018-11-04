@@ -16,9 +16,9 @@ export class SinglePostComponent implements OnInit {
   ngOnInit() {}
 
   removePost() {
+    this.postRemove.emit(this.post);
     this.postService.deletePost(this.post.id).subscribe(res => {
       if (res['status'] === 200) {
-        this.postRemove.emit(this.post);
       }
     });
   }

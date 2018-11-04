@@ -17,9 +17,9 @@ export class PostFormComponent implements OnInit {
   ngOnInit() {}
 
   share() {
+    this.posting = true;
     this.postService.createPost(this.post).subscribe(data => {
       this.postEvent.emit(data);
-      this.posting = true;
       this.post = {};
       this.posting = false;
     });
