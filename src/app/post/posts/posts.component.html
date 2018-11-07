@@ -1,5 +1,5 @@
 <ng-masonry-grid [masonryOptions]="myOptions" (onNgMasonryInit)="onNgMasonryInit($event)" [useAnimation]="true"
-  [useImagesLoaded]="true" [scrollAnimationOptions]="{ animationEffect: 'effect-5', minDuration : 0.4, maxDuration : 0.7 }">
+  [useImagesLoaded]="true" [scrollAnimationOptions]="{minDuration : 0.4, maxDuration : 0.7 }">
   <div class="col m6 l4 s12 stamp">
     <app-post-form *ngIf="user?.id == userService?.user.id" (postEvent)="receivePost($event)"></app-post-form>
   </div>

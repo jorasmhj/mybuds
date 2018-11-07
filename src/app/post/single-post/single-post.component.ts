@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-single-post',
@@ -11,7 +12,10 @@ export class SinglePostComponent implements OnInit {
   post;
   @Output()
   postRemove = new EventEmitter<any>();
-  constructor(private postService: PostService) {}
+  constructor(
+    private postService: PostService,
+    public userService: UserService
+  ) {}
 
   ngOnInit() {}
 

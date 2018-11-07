@@ -5,10 +5,14 @@
     <ul class="right hide-on-med-and-down black-text">
       <ng-container *ngIf="!userService.isLoggedIn() else logUser">
         <li routerLinkActive="active"><a [routerLink]="['/']">Login</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/settings']">Settings</a></li>
         <li routerLinkActive="active"><a [routerLink]="['signup']">SignUp</a></li>
       </ng-container>
 
       <ng-template #logUser>
+        <li class="notify_bell">
+          <i class="material-icons">notifications_none</i>
+        </li>
         <li routerLinkActive="active" mat-button [matMenuTriggerFor]="menu" style="cursor:pointer">&nbsp;{{
           userService.user?.name | titlecase
           }}
@@ -16,6 +20,7 @@
         </li>
         <mat-menu #menu="matMenu">
           <button mat-menu-item><a href="#!">Profile</a></button>
+          <button mat-menu-item><a routerLink="/settings">Settings</a></button>
           <button mat-menu-item><a (click)="logout()">Logout</a></button>
         </mat-menu>
       </ng-template>

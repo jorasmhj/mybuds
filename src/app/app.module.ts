@@ -8,7 +8,11 @@ import { NgMasonryGridModule } from 'ng-masonry-grid';
 import {
   MatSnackBarModule,
   MatMenuModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatDatepickerModule,
+  MatFormFieldModule,
+  MatNativeDateModule,
+  MatInputModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -22,6 +26,7 @@ import { CoverComponent } from './user/dashboard/cover/cover.component';
 import { PostFormComponent } from './post/post-form/post-form.component';
 import { PostsComponent } from './post/posts/posts.component';
 import { SinglePostComponent } from './post/single-post/single-post.component';
+import { SettingsComponent } from './user/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +39,7 @@ import { SinglePostComponent } from './post/single-post/single-post.component';
     CoverComponent,
     PostFormComponent,
     PostsComponent,
+    SettingsComponent,
     SinglePostComponent
   ],
   imports: [
@@ -45,6 +51,10 @@ import { SinglePostComponent } from './post/single-post/single-post.component';
     BrowserAnimationsModule,
     MatSnackBarModule,
     HttpClientModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule,
     RouterModule.forRoot(
       [
         {
@@ -60,6 +70,11 @@ import { SinglePostComponent } from './post/single-post/single-post.component';
         {
           path: 'user/:id',
           component: DashboardComponent,
+          canActivate: [AuthGuardService]
+        },
+        {
+          path: 'settings',
+          component: SettingsComponent,
           canActivate: [AuthGuardService]
         },
         {

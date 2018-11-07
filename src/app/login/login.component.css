@@ -14,6 +14,6 @@ button {
   top: 15px;
 }
 
-input.ng-valid.ng-touched {
-  border-bottom: 2px solid #000;
+input {
+  border-bottom: 2px solid #000 !important;
 }

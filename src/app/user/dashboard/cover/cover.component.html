@@ -10,6 +10,14 @@
       <span class="user-name flow-text">
         {{ user.name|titlecase }}
       </span>
+      <ng-container *ngIf="user.id != userService.user?.id">
+        <button class="btn btn-primary myColor">
+          <span class="ng-star-inserted">Follow</span>
+        </button>
+        <button class="btn btn-primary myColor">
+          <span class="ng-star-inserted">Un-follow</span>
+        </button>
+      </ng-container>
     </div>
     <div class="row user-overview">
       <div class="col s4 m4">

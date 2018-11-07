@@ -46,3 +46,8 @@ nav ul li.active {
 .active a {
   font-weight: bold;
 }
+
+.notify_bell {
+  margin-right: 15px;
+  cursor: pointer;
+}

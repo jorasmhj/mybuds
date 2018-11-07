@@ -11,7 +11,8 @@ img.thumb {
   height: 50px;
 }
 
-.post-user {
+.post-user a {
+  color: #000;
   font-size: 16px;
   font-weight: 600;
 }

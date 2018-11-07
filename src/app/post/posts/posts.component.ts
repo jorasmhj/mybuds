@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Masonry, MasonryOptions, MasonryGridItem } from 'ng-masonry-grid';
 import { PostService } from 'src/app/services/post.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-posts',
@@ -12,6 +13,7 @@ export class PostsComponent implements OnInit {
   @Input()
   user;
   posts: any;
+  currentUserId: number;
   _masonry: Masonry;
 
   public myOptions: MasonryOptions = {
@@ -22,7 +24,8 @@ export class PostsComponent implements OnInit {
 
   constructor(
     public userService: UserService,
-    private postService: PostService
+    private postService: PostService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -32,7 +35,6 @@ export class PostsComponent implements OnInit {
   getPost() {
     this.postService.getPost().subscribe(data => {
       this.posts = data;
-      console.log(data);
     });
   }
 

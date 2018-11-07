@@ -17,11 +17,19 @@ export class PostFormComponent implements OnInit {
   ngOnInit() {}
 
   share() {
-    this.posting = true;
-    this.postService.createPost(this.post).subscribe(data => {
-      this.postEvent.emit(data);
-      this.post = {};
-      this.posting = false;
-    });
+    if (this.post.content.trim() !== '') {
+      this.posting = true;
+      this.postService.createPost(this.post).subscribe(
+        data => {
+          this.postEvent.emit(data);
+          this.post = {};
+          this.posting = false;
+        },
+        err => {
+          this.post = {};
+          this.posting = false;
+        }
+      );
+    }
   }
 }
