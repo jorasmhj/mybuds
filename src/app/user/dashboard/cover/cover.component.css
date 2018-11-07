@@ -134,3 +134,32 @@
   font-weight: bold;
   padding-left: 5px;
 }
+
+@media (max-width: 750px) {
+  .cover {
+    height: 7em;
+  }
+  .img-holder {
+    height: 100px;
+  }
+
+  .user-info {
+    position: relative;
+    width: auto;
+  }
+
+  .user-name {
+    font-size: 29px;
+  }
+  .user-overview {
+    font-size: 11px;
+    position: static;
+    margin-top: 20px;
+  }
+
+  .notification {
+    width: 35px;
+    height: 35px;
+    font-size: 15px;
+  }
+}
