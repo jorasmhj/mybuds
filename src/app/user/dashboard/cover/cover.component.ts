@@ -11,10 +11,7 @@ export class CoverComponent implements OnInit {
   @Input()
   user;
 
-  constructor(
-    private userService: UserService,
-    private route: ActivatedRoute
-  ) {}
+  constructor(public userService: UserService, private route: ActivatedRoute) {}
 
   ngOnInit() {}
 }
