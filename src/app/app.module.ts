@@ -10,6 +10,7 @@ import {
   MatMenuModule,
   MatSidenavModule
 } from '@angular/material';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -22,6 +23,7 @@ import { CoverComponent } from './user/dashboard/cover/cover.component';
 import { PostFormComponent } from './post/post-form/post-form.component';
 import { PostsComponent } from './post/posts/posts.component';
 import { SinglePostComponent } from './post/single-post/single-post.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { SinglePostComponent } from './post/single-post/single-post.component';
     BrowserAnimationsModule,
     MatSnackBarModule,
     HttpClientModule,
+    FlashMessagesModule.forRoot(),
     RouterModule.forRoot(
       [
         {

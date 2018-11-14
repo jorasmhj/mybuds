@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Masonry, MasonryOptions, MasonryGridItem } from 'ng-masonry-grid';
 import { PostService } from 'src/app/services/post.service';
 import { ActivatedRoute } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-posts',
@@ -25,7 +26,8 @@ export class PostsComponent implements OnInit {
   constructor(
     public userService: UserService,
     private postService: PostService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _flashMessagesService: FlashMessagesService
   ) {}
 
   ngOnInit() {
@@ -56,6 +58,10 @@ export class PostsComponent implements OnInit {
       this._masonry.removeItem(a).subscribe((item: MasonryGridItem) => {
         if (item) {
           this.posts.splice(id, 1);
+          this._flashMessagesService.show('Post Deleted.', {
+            cssClass: 'alert-success',
+            timeout: 4000
+          });
         }
       });
     }

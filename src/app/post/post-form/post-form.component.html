@@ -1,12 +1,32 @@
 <div class="card">
   <form #form="ngForm" (ngSubmit)="form.valid && share()">
-    <div class="black-text">
-      <span class="card-title">What's new</span>
+    <div class="black-text"><span class="card-title">What's new</span></div>
+    <textarea
+      placeholder="Share something..."
+      cols="30"
+      rows="5"
+      [(ngModel)]="post.content"
+      name="text"
+      required
+    ></textarea>
+    <div>
+      <img
+        *ngFor="let url of post.photos"
+        [src]="url"
+        class="rounded mb-3"
+        height="70"
+        [@fallIn]="state"
+        style="margin:2px"
+      />
     </div>
-    <textarea placeholder="Share something..." cols="30" rows="5" [(ngModel)]="post.content" name="text" required></textarea>
     <div class="card-action">
-      <button type="submit" class="btn btn-primary myColor" [disabled]="form.invalid || posting">
-        <span *ngIf="!posting else loading">Post</span>
+      <input type="file" multiple (change)="detectFiles($event)" />
+      <button
+        type="submit"
+        class="btn btn-primary myColor right"
+        [disabled]="form.invalid || posting"
+      >
+        <span *ngIf="!posting; else: loading">Post</span>
         <ng-template #loading>
           <div class="lds-ellipsis">
             <div></div>

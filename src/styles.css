@@ -132,3 +132,34 @@ input[type='text'] {
 .mat-drawer-content {
   min-height: 100vh;
 }
+
+#flashMessages {
+  position: fixed;
+  right: 0;
+  padding: 15px;
+  bottom: 0;
+  z-index: 100;
+}
+
+.flash-message {
+  border-radius: 7px;
+  margin-bottom: 10px;
+  padding: 15px;
+  animation-name: comeup;
+  animation-duration: 0.5s;
+}
+
+.alert-success {
+  background: rgb(41, 240, 140);
+}
+
+@keyframes comeup {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}

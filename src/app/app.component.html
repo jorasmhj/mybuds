@@ -1,38 +1,32 @@
 <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side">
-        <ul class="center-align">
-            <ng-container *ngIf="!userService.isLoggedIn() else logUser">
-                <a [routerLink]="['/']">
-                    <li>Login</li>
-                </a>
-                <a [routerLink]="
-                ['signup']">
-                    <li>Signup</li>
-                </a>
-            </ng-container>
-            <ng-template #logUser>
-                <a [routerLink]="['/']">
-                    <li>Profile</li>
-                </a>
-                <a routerLink="/settings">
-                    <li>Settings</li>
-                </a>
-                <a (click)="logout()">
-                    <li>Logout</li>
-                </a>
-            </ng-template>
+  <mat-sidenav #sidenav mode="side">
+    <ul class="center-align">
+      <ng-container *ngIf="!userService.isLoggedIn(); else: logUser">
+        <a [routerLink]="['/']"> <li>Login</li> </a>
+        <a [routerLink]="['signup']"> <li>Signup</li> </a>
+      </ng-container>
+      <ng-template #logUser>
+        <a [routerLink]="['/']"> <li>Profile</li> </a>
+        <a routerLink="/settings"> <li>Settings</li> </a>
+        <a (click)="logout()"> <li>Logout</li> </a>
+      </ng-template>
+    </ul>
+  </mat-sidenav>
 
-        </ul>
-    </mat-sidenav>
-
-    <mat-sidenav-content>
-        <div class="
-                hide-on-large-only sidenav-toggler">
-            <i class="black-text material-icons" mat-button (click)="sidenav.toggle()">menu</i>
-        </div>
-        <app-navbar></app-navbar>
-        <div class="container main-content">
-            <router-outlet></router-outlet>
-        </div>
-    </mat-sidenav-content>
+  <mat-sidenav-content>
+    <div class="hide-on-large-only sidenav-toggler">
+      <i
+        class="black-text material-icons"
+        mat-button
+        (click)="sidenav.toggle()"
+      >
+        menu
+      </i>
+    </div>
+    <app-navbar></app-navbar>
+    <div class="container main-content">
+      <div class="flashMsg"><flash-messages></flash-messages></div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
 </mat-sidenav-container>

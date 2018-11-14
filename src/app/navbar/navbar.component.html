@@ -5,7 +5,6 @@
     <ul class="right hide-on-med-and-down black-text">
       <ng-container *ngIf="!userService.isLoggedIn() else logUser">
         <li routerLinkActive="active"><a [routerLink]="['/']">Login</a></li>
-        <li routerLinkActive="active"><a [routerLink]="['/settings']">Settings</a></li>
         <li routerLinkActive="active"><a [routerLink]="['signup']">SignUp</a></li>
       </ng-container>
 

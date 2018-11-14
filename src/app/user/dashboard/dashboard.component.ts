@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { moveIn } from 'src/app/animation';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  animations: [moveIn()]
 })
 export class DashboardComponent implements OnInit {
+  // @HostBinding('@moveIn')
   user;
 
   constructor(
