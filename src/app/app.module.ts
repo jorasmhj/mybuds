@@ -11,6 +11,7 @@ import {
   MatSidenavModule
 } from '@angular/material';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { FacebookModule } from 'ngx-facebook';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -47,6 +48,7 @@ import { from } from 'rxjs';
     BrowserAnimationsModule,
     MatSnackBarModule,
     HttpClientModule,
+    FacebookModule.forRoot(),
     FlashMessagesModule.forRoot(),
     RouterModule.forRoot(
       [

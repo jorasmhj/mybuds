@@ -2,14 +2,19 @@
   <div class="row">
     <div class="col s2">
       <div class="thumb-holder">
-        <img alt="" class="circle responsive-img thumb" height="40" src="https://materializecss.com/images/yuna.jpg"
-          width="40">
+        <img
+          alt=""
+          class="circle responsive-img thumb"
+          height="40"
+          src="https://materializecss.com/images/yuna.jpg"
+          width="40"
+        />
         <span class="noti">2</span>
       </div>
     </div>
     <div class="col s10" style="padding-left: 20px;">
       <span class="post-user">
-        <ng-container *ngIf="post.user.id == userService.user.id else link2">
+        <ng-container *ngIf="post.user.id == userService.user.id; else: link2">
           <a routerLink="/">{{ post.user?.name }}</a>
         </ng-container>
         <ng-template #link2>
@@ -17,12 +22,15 @@
         </ng-template>
       </span>
       <div class="post-time">
-        <span>{{ post.created_at|date:'h:mma - MMM d, y' }}</span>
+        <span>{{ post.created_at | date: 'h:mma - MMM d, y' }}</span>
       </div>
       <div class="card-content">
         <p>{{ post.content }}</p>
       </div>
     </div>
+  </div>
+  <div class="row card-footer">
+    <i class="material-icons" (click)="ogShare(post.content)">share</i>
   </div>
   <div class="post-options" mat-button [matMenuTriggerFor]="menu">
     <i class="material-icons">more_vert</i>
