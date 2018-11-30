@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private titleService: Title,
     public snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.titleService.setTitle('Login');

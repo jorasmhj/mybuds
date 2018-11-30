@@ -55,3 +55,17 @@ img.thumb {
 .post-options:hover {
   color: #000;
 }
+
+
+.post-action{
+  padding: 0px 15px;
+}
+
+.post-action i {
+  color: #c4c4c4;
+  cursor: pointer;
+}
+
+.post-action i:hover{
+  color: #000; 
+}

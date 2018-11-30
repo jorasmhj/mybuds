@@ -5,25 +5,23 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PostService {
-  private baseUrl = 'https://mybuds.herokuapp.com/api/auth/';
+  private baseUrl = 'http://localhost:3000/post/';
 
   constructor(private http: HttpClient) {}
 
   getPost() {
-    return this.http.get(this.baseUrl + 'post?token=' + this.getToken());
+    return this.http.get(this.baseUrl + '?token=' + this.getToken());
   }
 
   createPost(post) {
-    return this.http.post(this.baseUrl + 'post', {
+    return this.http.post(this.baseUrl, {
       token: this.getToken(),
-      post: post
+      ...post
     });
   }
 
   deletePost(postId) {
-    return this.http.post(this.baseUrl + 'post/' + postId, {
-      token: this.getToken()
-    });
+    return this.http.delete(this.baseUrl + postId + '?token=' + this.getToken());
   }
 
   getToken() {

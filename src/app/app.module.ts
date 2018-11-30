@@ -5,11 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgMasonryGridModule } from 'ng-masonry-grid';
-import {
-  MatSnackBarModule,
-  MatMenuModule,
-  MatSidenavModule
-} from '@angular/material';
+import { MatSnackBarModule, MatMenuModule, MatSidenavModule } from '@angular/material';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { FacebookModule } from 'ngx-facebook';
 
@@ -24,7 +20,8 @@ import { CoverComponent } from './user/dashboard/cover/cover.component';
 import { PostFormComponent } from './post/post-form/post-form.component';
 import { PostsComponent } from './post/posts/posts.component';
 import { SinglePostComponent } from './post/single-post/single-post.component';
-import { from } from 'rxjs';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ProjectComponent } from './project/project.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +34,9 @@ import { from } from 'rxjs';
     CoverComponent,
     PostFormComponent,
     PostsComponent,
-    SinglePostComponent
+    SinglePostComponent,
+    ForgotPasswordComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +69,14 @@ import { from } from 'rxjs';
         {
           path: 'settings',
           loadChildren: './user/settings/settings.module#SettingsModule'
+        },
+        {
+          path: 'projects',
+          component: ProjectComponent
+        },
+        {
+          path: 'forgot-password',
+          component: ForgotPasswordComponent
         },
 
         { path: '**', component: NotFoundComponent }

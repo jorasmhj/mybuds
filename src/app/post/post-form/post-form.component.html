@@ -5,19 +5,12 @@
       placeholder="Share something..."
       cols="30"
       rows="5"
-      [(ngModel)]="post.content"
+      [(ngModel)]="post.description"
       name="text"
       required
     ></textarea>
-    <div>
-      <img
-        *ngFor="let url of post.photos"
-        [src]="url"
-        class="rounded mb-3"
-        height="70"
-        [@fallIn]="state"
-        style="margin:2px"
-      />
+    <div *ngFor="let url of post.photos">
+      <img [src]="url" class="rounded mb-3" height="70" [@fallIn]="state" style="margin:2px" />
     </div>
     <div class="card-action">
       <input type="file" multiple (change)="detectFiles($event)" />

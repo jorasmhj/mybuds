@@ -47,22 +47,24 @@ export class SinglePostComponent implements OnInit {
         })
       })
       .then(
-        success => {
+        (success) => {
           console.log(success);
           this._flashMessagesService.show('Post Shared.', {
             cssClass: 'alert-success',
             timeout: 4000
           });
         },
-        err => {}
+        (err) => {}
       );
   }
 
   removePost() {
     this.postRemove.emit(this.post);
-    this.postService.deletePost(this.post.id).subscribe(res => {
-      if (res['status'] === 200) {
-      }
+    this.postService.deletePost(this.post._id).subscribe((res) => {
+      this._flashMessagesService.show('Post Deleted.', {
+        cssClass: 'alert-success',
+        timeout: 4000
+      });
     });
   }
 }

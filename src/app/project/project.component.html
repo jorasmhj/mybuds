@@ -1,0 +1,12 @@
+<div class="green" *ngFor="let project of projects; let i = index" (click)="edit(i)">
+  {{ project.title }} - {{ project.date | date }}
+</div>
+<form #form="ngForm">
+  <input type="text" name="title" #title="ngModel" [(ngModel)]="project.title" required />
+  <small class="red-text" *ngIf="title.touched && title.errors?.required"> Required </small>
+  <input type="text" name="date" #date="ngModel" [(ngModel)]="project.date" required />
+  <small class="red-text" *ngIf="date.touched && date.errors?.required"> Required </small>
+
+  <br />
+  <button (click)="form.valid && submit(form)">Save</button>
+</form>

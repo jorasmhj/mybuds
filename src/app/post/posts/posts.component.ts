@@ -13,7 +13,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class PostsComponent implements OnInit {
   @Input()
   user;
-  posts: any;
+  posts: any = [];
   currentUserId: number;
   _masonry: Masonry;
 
@@ -35,8 +35,8 @@ export class PostsComponent implements OnInit {
   }
 
   getPost() {
-    this.postService.getPost().subscribe(data => {
-      this.posts = data;
+    this.postService.getPost().subscribe((data) => {
+      this.posts = data['post'];
     });
   }
 
@@ -58,10 +58,6 @@ export class PostsComponent implements OnInit {
       this._masonry.removeItem(a).subscribe((item: MasonryGridItem) => {
         if (item) {
           this.posts.splice(id, 1);
-          this._flashMessagesService.show('Post Deleted.', {
-            cssClass: 'alert-success',
-            timeout: 4000
-          });
         }
       });
     }

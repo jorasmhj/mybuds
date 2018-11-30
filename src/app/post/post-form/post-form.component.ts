@@ -34,15 +34,15 @@ export class PostFormComponent implements OnInit {
   }
 
   share() {
-    if (this.post.content.trim() !== '') {
+    if (this.post.description.trim() !== '') {
       this.posting = true;
       this.postService.createPost(this.post).subscribe(
-        data => {
+        (data) => {
           this.postEvent.emit(data);
           this.post = <Post>{};
           this.posting = false;
         },
-        err => {
+        (err) => {
           this.post = <Post>{};
           this.posting = false;
         }

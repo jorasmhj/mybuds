@@ -6,7 +6,7 @@
           alt=""
           class="circle responsive-img thumb"
           height="40"
-          src="https://materializecss.com/images/yuna.jpg"
+          [src]="post.user.userImage"
           width="40"
         />
         <span class="noti">2</span>
@@ -14,23 +14,23 @@
     </div>
     <div class="col s10" style="padding-left: 20px;">
       <span class="post-user">
-        <ng-container *ngIf="post.user.id == userService.user.id; else: link2">
+        <ng-container *ngIf="post.user._id == userService.user.id; else: link2">
           <a routerLink="/">{{ post.user?.name }}</a>
         </ng-container>
         <ng-template #link2>
-          <a routerLink="/user/{{ post.user?.id }}">{{ post.user?.name }}</a>
+          <a routerLink="/user/{{ post.user?._id }}">{{ post.user?.name }}</a>
         </ng-template>
       </span>
       <div class="post-time">
-        <span>{{ post.created_at | date: 'h:mma - MMM d, y' }}</span>
+        <span>{{ post.created | date: 'h:mma - MMM d, y' }}</span>
       </div>
       <div class="card-content">
-        <p>{{ post.content }}</p>
+        <p>{{ post.description }}</p>
       </div>
     </div>
   </div>
   <div class="row card-footer">
-    <i class="material-icons" (click)="ogShare(post.content)">share</i>
+    <div class="post-action"><i class="fas fa-share" (click)="ogShare(post.content)"></i></div>
   </div>
   <div class="post-options" mat-button [matMenuTriggerFor]="menu">
     <i class="material-icons">more_vert</i>

@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { decode } from '@angular/router/src/url_tree';
-import { stringify } from '@angular/compiler/src/util';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
   private iss = {
     login: 'https://mybuds.herokuapp.com/api/auth/login',
     signup: 'https://mybuds.herokuapp.com/api/auth/signup'
   };
-  private baseUrl = 'https://mybuds.herokuapp.com/api/auth/';
+  private baseUrl = 'http://localhost:3000/user/';
   get user() {
     let user = JSON.parse(localStorage.getItem('user'));
     if (user) return user;
@@ -24,7 +27,11 @@ export class UserService {
   }
 
   login(user) {
-    return this.http.post(this.baseUrl + 'login', user);
+    this.httpOptions.headers.append(
+      'Access-Control-Allow-Origin',
+      'http://localhost:3000'
+    );
+    return this.http.post(this.baseUrl + 'login', user, this.httpOptions);
   }
 
   me() {
@@ -38,7 +45,7 @@ export class UserService {
   }
 
   loggedIn(data) {
-    localStorage.setItem('token', data.access_token);
+    localStorage.setItem('token', data.token);
     // this.me();
   }
 
@@ -59,5 +66,11 @@ export class UserService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+  }
+
+  uploadPic(pic) {
+    let fd = new FormData();
+    fd.append('photo', pic, pic.name);
+    return this.http.post(this.baseUrl + 'uploadpropic', pic);
   }
 }
