@@ -6,7 +6,11 @@
           alt=""
           class="circle responsive-img thumb"
           height="40"
-          [src]="post.user.userImage"
+          [src]="
+            post.user._id == userService.user._id
+              ? userService.user.userImage
+              : 'http://localhost/3000/' + post.user.userImage
+          "
           width="40"
         />
         <span class="noti">2</span>

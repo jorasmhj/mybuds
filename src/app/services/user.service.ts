@@ -27,10 +27,7 @@ export class UserService {
   }
 
   login(user) {
-    this.httpOptions.headers.append(
-      'Access-Control-Allow-Origin',
-      'http://localhost:3000'
-    );
+    this.httpOptions.headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
     return this.http.post(this.baseUrl + 'login', user, this.httpOptions);
   }
 
@@ -70,7 +67,10 @@ export class UserService {
 
   uploadPic(pic) {
     let fd = new FormData();
-    fd.append('photo', pic, pic.name);
-    return this.http.post(this.baseUrl + 'uploadpropic', pic);
+    fd.append('userImage', pic, pic.name);
+    return this.http.patch(this.baseUrl + 'upload-img/?token=' + this.getToken(), fd, {
+      reportProgress: true,
+      observe: 'events'
+    });
   }
 }

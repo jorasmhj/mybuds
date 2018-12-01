@@ -1,11 +1,17 @@
 <span *ngIf="user.photo">{{ user.photo }}</span>
 <div class="cover">
   <div class="img-holder">
-    <img [src]="user.photo || 'https://materializecss.com/images/yuna.jpg'" alt="" class="user-img">
-    <div class="uploadprogress" *ngIf="uploadPic" [ngStyle]="{ 'width': (100 - uploadprogress)+'%' }"></div>
-    <div class="notification">
-      1
-    </div>
+    <img
+      [src]="user.userImage || 'https://materializecss.com/images/yuna.jpg'"
+      alt=""
+      class="user-img"
+    />
+    <div
+      class="uploadprogress"
+      *ngIf="uploadPic"
+      [ngStyle]="{ width: 100 - uploadprogress + '%' }"
+    ></div>
+    <div class="notification">1</div>
     <div class="pro-pic-upload" (click)="clickinp(pic)">
       <i class="material-icons">file_upload</i>
       <input type="file" multiple #pic class="hide" (change)="detectFiles($event)" />
@@ -13,9 +19,7 @@
   </div>
   <div class="user-info left">
     <div>
-      <span class="user-name flow-text">
-        {{ user.name|titlecase }}
-      </span>
+      <span class="user-name flow-text"> {{ user.name | titlecase }} </span>
       <ng-container *ngIf="user.id != userService.user?.id">
         <button class="btn btn-primary myColor">
           <span class="ng-star-inserted">Follow</span>
@@ -29,42 +33,21 @@
       <div class="col s4 m4">
         <div class="overview-item">
           <div>
-            <i class="material-icons">photo_library</i>
-            <span class="overview-number">
-              14
-            </span>
+            <i class="material-icons">photo_library</i> <span class="overview-number"> 14 </span>
           </div>
-          <div>
-            <span>
-              Collection
-            </span>
-          </div>
+          <div><span> Collection </span></div>
         </div>
       </div>
       <div class="col s4 m4">
         <div class="overview-item">
-          <div>
-            <span class="overview-number">
-              315
-            </span>
-          </div>
-          <div>
-            <span>
-              Followers
-            </span>
-          </div>
+          <div><span class="overview-number"> 315 </span></div>
+          <div><span> Followers </span></div>
         </div>
       </div>
       <div class="col s4 m4">
         <div class="overview-item">
-          <span class="overview-number">
-            923
-          </span>
-          <div>
-            <span>
-              Followings
-            </span>
-          </div>
+          <span class="overview-number"> 923 </span>
+          <div><span> Followings </span></div>
         </div>
       </div>
     </div>

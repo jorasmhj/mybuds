@@ -14,9 +14,9 @@ export class CoverComponent implements OnInit {
   uploadprogress = 0;
   uploadPic: boolean;
 
-  constructor(public userService: UserService, private route: ActivatedRoute) { }
+  constructor(public userService: UserService, private route: ActivatedRoute) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   clickinp(inp) {
     inp.click();
@@ -26,16 +26,19 @@ export class CoverComponent implements OnInit {
     let file = event.target.files[0];
     let reader = new FileReader();
     reader.onload = (e: any) => {
-      this.user.photo = e.target.result;
+      this.user.userImage = e.target.result;
     };
     reader.readAsDataURL(file);
     this.uploadPic = true;
     this.uploadprogress = 0;
     this.userService.uploadPic(file).subscribe(
-      events => {
-        console.log(events);
+      (events) => {
+        if (events.type === HttpEventType.UploadProgress) {
+          this.uploadprogress = (events.loaded / events.total) * 100;
+        } else if (events.type === HttpEventType.Response) {
+        }
       },
-      error => {
+      (error) => {
         console.log(error);
       }
     );
