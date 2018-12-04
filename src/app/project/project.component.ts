@@ -12,10 +12,41 @@ export class ProjectComponent implements OnInit {
   editId: number;
   editMode: boolean;
 
+  types = [{name: 'a', checked: false}, {name: 'b', checked: false}]
+
+  checked = { jobType: [] };
+  checkedAfter = { jobType: [] };
+
   constructor() {}
 
   ngOnInit() {
     this.getProjects();
+  }
+
+  changeParent(i){
+    this.projects[i].title = 'jpt';
+  }
+
+  updateCheck(e){
+    let index = this.types.findIndex(a => a.name == e.target.value);
+    this.types[index].checked = (e.target.checked) ? true : false;
+
+    this.checked.jobType = [];
+    for(let type of this.types){
+      if(type.checked) this.checked.jobType.push(type.name);
+      else this.checked.jobType = this.checked.jobType.filter(a => a != type.name);
+    }
+  }
+
+  saveCheck(){
+    this.checkedAfter.jobType = this.checked.jobType.slice(0);
+  }
+
+  cancleCheck(){
+    for(let type of this.types){
+      type.checked = this.checkedAfter.jobType.indexOf(type.name)  > -1 ? true : false;
+    }
+    this.checked = Object.assign({}, this.checkedAfter);
   }
 
   getProjects() {
@@ -30,6 +61,7 @@ export class ProjectComponent implements OnInit {
   edit(index: number) {
     this.editId = index;
     this.editMode = true;
+    
     this.project = Object.assign({}, this.projects[index]);
   }
 

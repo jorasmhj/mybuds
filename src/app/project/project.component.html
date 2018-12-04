@@ -1,6 +1,27 @@
-<div class="green" *ngFor="let project of projects; let i = index" (click)="edit(i)">
+<div class="green" *ngFor="let project of projects; let i = index">
   {{ project.title }} - {{ project.date | date }}
+  <button (click)="edit(i)">Edit</button>
+  <button (click)="changeParent(0)">sasd</button>
 </div>
+
+<div class="row blue">
+  <form #form='ngForm'>
+    <ng-container *ngFor="let type of types">
+        <input type="checkbox" [value]="type.name" [checked]="type.checked" name="jobType"  (change)="updateCheck($event)"> 
+        <br>
+    </ng-container>
+  </form>
+  <button (click)="saveCheck()">Save</button>
+  <button (click)="cancleCheck()">Cancle</button>
+  <br>
+  <pre>{{types|json}}
+
+{{ checked|json }}
+
+{{checkedAfter|json}}
+  </pre>
+</div>
+
 <form #form="ngForm">
   <input type="text" name="title" #title="ngModel" [(ngModel)]="project.title" required />
   <small class="red-text" *ngIf="title.touched && title.errors?.required"> Required </small>

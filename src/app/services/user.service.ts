@@ -68,6 +68,8 @@ export class UserService {
   uploadPic(pic) {
     let fd = new FormData();
     fd.append('userImage', pic, pic.name);
+    let data = {a: 'good'};
+    fd.append('data', JSON.stringify(data));
     return this.http.patch(this.baseUrl + 'upload-img/?token=' + this.getToken(), fd, {
       reportProgress: true,
       observe: 'events'

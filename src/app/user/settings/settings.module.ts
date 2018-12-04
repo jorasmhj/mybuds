@@ -18,6 +18,7 @@ import {
     MatNativeDateModule,
     MatInputModule
   ],
-  declarations: [SettingsComponent]
+  declarations: [SettingsComponent],
+  exports: [SettingsComponent]
 })
 export class SettingsModule {}

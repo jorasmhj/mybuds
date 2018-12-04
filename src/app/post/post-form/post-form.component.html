@@ -9,11 +9,14 @@
       name="text"
       required
     ></textarea>
-    <div *ngFor="let url of post.photos">
-      <img [src]="url" class="rounded mb-3" height="70" [@fallIn]="state" style="margin:2px" />
-    </div>
+    <ng-container *ngIf="post.photos.length > 0">
+      <div class="center pic-holder">
+        <img [src]="url" *ngFor="let url of post.photos" class="rounded mb-3" height="70" [@fallIn]="state" style="margin:2px" />
+      </div>
+    </ng-container>
     <div class="card-action">
-      <input type="file" multiple (change)="detectFiles($event)" />
+      <i class="material-icons" [ngStyle]="{'color':'#c4c4c4', 'position':'absolute', 'cursor':'pointer'}" (click)="selectPic.click()">insert_photo</i>
+      <input type="file" class="hide" multiple #selectPic (change)="detectFiles($event)" />
       <button
         type="submit"
         class="btn btn-primary myColor right"

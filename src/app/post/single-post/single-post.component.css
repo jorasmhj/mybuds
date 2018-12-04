@@ -9,6 +9,7 @@ img.thumb {
   width: 50px;
   max-width: 50px !important;
   height: 50px;
+  object-fit: cover;
 }
 
 .post-user a {

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { moveIn } from '../animation';
 import { MatSnackBar } from '@angular/material';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private titleService: Title,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    public _flashMessagesService: FlashMessagesService
   ) { }
 
   ngOnInit() {
@@ -54,6 +56,10 @@ export class LoginComponent implements OnInit {
         this.userService.loggedIn(data);
         this.router.navigate(['/dashboard']);
         this.submit = false;
+        this._flashMessagesService.show('Logged In.', {
+          cssClass: 'alert-success',
+          timeout: 4000
+        });
       },
       error => {
         this.loginError = error.error.error;

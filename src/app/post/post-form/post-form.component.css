@@ -48,3 +48,9 @@ button {
 .lds-ellipsis div {
   top: 15px;
 }
+
+.pic-holder{
+  border: 1px solid #e0e0e0;
+  margin: 2px 5px;
+  border-radius: 2px;
+}

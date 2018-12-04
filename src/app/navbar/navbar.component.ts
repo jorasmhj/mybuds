@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   open = 0;
 
-  constructor(public userService: UserService, private router: Router) {}
+  constructor(public userService: UserService, private router: Router, private _flashMessagesService: FlashMessagesService) {}
 
   ngOnInit() {}
 
@@ -21,5 +22,9 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.userService.logout();
     this.router.navigate(['/']);
+    this._flashMessagesService.show('Logged Out.', {
+      cssClass: 'alert-success',
+      timeout: 4000
+    });
   }
 }

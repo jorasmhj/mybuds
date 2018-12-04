@@ -51,6 +51,14 @@ export class PostsComponent implements OnInit {
     }
   }
 
+  reloadMasonry(){
+    this._masonry.layout();
+    let element: HTMLElement = document.getElementById('reload') as HTMLElement;
+    setTimeout (() => {
+      element.click();
+    }, 100);
+  }
+
   removeItem($event: any) {
     let id = this.posts.indexOf($event);
     let a = document.getElementById('masonry-item-' + id);
