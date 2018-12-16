@@ -15,25 +15,29 @@ export class SignupComponent implements OnInit {
   @HostBinding('@moveIn')
   user: User = new User();
   conformPassword: string;
+  submit: boolean;
 
   constructor(
     private userService: UserService,
     private router: Router,
     private titleService: Title
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.titleService.setTitle('Sign Up');
   }
 
   signUp(form) {
+    this.submit = true;
     this.userService.signUp(this.user).subscribe(
       data => {
         this.userService.loggedIn(data);
         this.router.navigate(['/dashboard']);
+        this.submit = false;
       },
       error => {
         console.log(error);
+        this.submit = false;
       }
     );
   }
