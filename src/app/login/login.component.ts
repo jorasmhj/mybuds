@@ -3,7 +3,7 @@ import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { moveIn } from '../animation';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { MapsAPILoader } from '@agm/core';
 import { } from '@types/googlemaps';

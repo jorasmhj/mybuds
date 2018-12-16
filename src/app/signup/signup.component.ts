@@ -4,6 +4,7 @@ import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { moveIn, fallIn } from '../animation';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signup',
@@ -20,11 +21,19 @@ export class SignupComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private titleService: Title
+    private titleService: Title,
+    public snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
     this.titleService.setTitle('Sign Up');
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+      verticalPosition: 'top'
+    });
   }
 
   signUp(form) {
@@ -38,6 +47,7 @@ export class SignupComponent implements OnInit {
       error => {
         console.log(error);
         this.submit = false;
+        this.openSnackBar(error.error.message, 'Close');
       }
     );
   }
