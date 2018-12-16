@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
     private userService: UserService,
     private route: ActivatedRoute,
     private titleService: Title
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -53,6 +53,10 @@ export class DashboardComponent implements OnInit {
     this.userService.getUser(id).subscribe(res => {
       this.user = res;
       this.titleService.setTitle(this.user.name);
-    });
+    },
+      err => {
+        console.log(err);
+      }
+    );
   }
 }

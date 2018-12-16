@@ -4,10 +4,10 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgMasonryGridModule } from 'ng-masonry-grid';
 import { MatSnackBarModule, MatMenuModule, MatSidenavModule } from '@angular/material';
 import { FlashMessagesModule } from 'angular2-flash-messages';
-import { FacebookModule } from 'ngx-facebook';
+import { AgmCoreModule } from '@agm/core';
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -17,11 +17,8 @@ import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './user/dashboard/dashboard.component';
 import { AuthGuardService } from './auth-guard.service';
 import { CoverComponent } from './user/dashboard/cover/cover.component';
-import { PostFormComponent } from './post/post-form/post-form.component';
-import { PostsComponent } from './post/posts/posts.component';
-import { SinglePostComponent } from './post/single-post/single-post.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProjectComponent } from './project/project.component';
+import { PostModule } from './post/post.module';
 
 @NgModule({
   declarations: [
@@ -32,22 +29,21 @@ import { ProjectComponent } from './project/project.component';
     SignupComponent,
     DashboardComponent,
     CoverComponent,
-    PostFormComponent,
-    PostsComponent,
-    SinglePostComponent,
-    ForgotPasswordComponent,
     ProjectComponent
   ],
   imports: [
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBYSdzNZkdiZ_PRcsnOgnbGf4V7ugwI7no',
+      libraries: ['places']
+    }),
+    PostModule,
     BrowserModule,
-    NgMasonryGridModule,
     MatSidenavModule,
     MatMenuModule,
     FormsModule,
     BrowserAnimationsModule,
     MatSnackBarModule,
     HttpClientModule,
-    FacebookModule.forRoot(),
     FlashMessagesModule.forRoot(),
     RouterModule.forRoot(
       [
@@ -76,7 +72,7 @@ import { ProjectComponent } from './project/project.component';
         },
         {
           path: 'forgot-password',
-          component: ForgotPasswordComponent
+          loadChildren: './forgot-password/forgot-password.module#ForgotPasswordModule'
         },
 
         { path: '**', component: NotFoundComponent }
@@ -88,4 +84,4 @@ import { ProjectComponent } from './project/project.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

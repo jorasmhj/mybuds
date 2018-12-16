@@ -1,37 +1,72 @@
 <div class="card">
-  <form #form="ngForm" (ngSubmit)="form.valid && share()">
-    <div class="black-text"><span class="card-title">What's new</span></div>
-    <textarea
-      placeholder="Share something..."
-      cols="30"
-      rows="5"
-      [(ngModel)]="post.description"
-      name="text"
-      required
-    ></textarea>
-    <ng-container *ngIf="post.photos.length > 0">
-      <div class="center pic-holder">
-        <img [src]="url" *ngFor="let url of post.photos" class="rounded mb-3" height="70" [@fallIn]="state" style="margin:2px" />
-      </div>
-    </ng-container>
-    <div class="card-action">
-      <i class="material-icons" [ngStyle]="{'color':'#c4c4c4', 'position':'absolute', 'cursor':'pointer'}" (click)="selectPic.click()">insert_photo</i>
-      <input type="file" class="hide" multiple #selectPic (change)="detectFiles($event)" />
-      <button
-        type="submit"
-        class="btn btn-primary myColor right"
-        [disabled]="form.invalid || posting"
-      >
-        <span *ngIf="!posting; else: loading">Post</span>
-        <ng-template #loading>
-          <div class="lds-ellipsis">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </ng-template>
-      </button>
-    </div>
-  </form>
+	<form #form="ngForm" (ngSubmit)="form.valid && share()">
+		<div class="black-text"><span class="card-title">What's new</span></div>
+		<textarea placeholder="Share something..." cols="30" rows="5" [(ngModel)]="post.description" name="text" required></textarea>
+		<ng-container *ngIf="post.photos.length > 0">
+			<div class="center pic-holder">
+				<img [src]="url" *ngFor="let url of post.photos" class="rounded mb-3" height="70" [@fallIn]="state" style="margin:2px" />
+			</div>
+		</ng-container>
+		<div class="card-action">
+			<div class="left" [ngStyle]="{'padding':'6px'}">
+				<i class="material-icons" [ngStyle]="{'color':'#000', 'font-size':'17px', 'cursor':'pointer'}" (click)="selectPic.click()">insert_photo</i>
+			</div>
+			<div class="left" [ngStyle]="{'padding':'6px'}" (click)="toggleEventForm()">
+				<i class="material-icons" [ngStyle]="{'color':'#000', 'font-size':'17px', 'cursor':'pointer'}">event</i>
+			</div>
+			<input type="file" class="hide" multiple #selectPic (change)="detectFiles($event)" />
+			{{ form.invalid }}
+			<button type="submit" class="btn btn-primary myColor right" [disabled]="form.invalid || posting">
+				<span *ngIf="
+			 !posting; else: loading">Post</span>
+				<ng-template #loading>
+					<div class="lds-ellipsis">
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+				</ng-template>
+			</button>
+		</div>
+	</form>
+</div>
+
+<div class="event-form modal" *ngIf="showEventForm" @fallIn>
+	<div class="modal-content">
+		<h4>Create Event</h4>
+		<div class="row">
+			<div class="col offset-s2 s8">
+				<form>
+					<mat-form-field>
+						<input matInput placeholder="Favorite food">
+					</mat-form-field>
+					<div class="row">
+						<div class="input-field col s6">
+							<mat-form-field>
+								<input matInput (click)="startDate.open()" [matDatepicker]="startDate" [max]="maxDate" placeholder="Start date"
+								 readonly>
+								<mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+								<mat-datepicker #startDate></mat-datepicker>
+							</mat-form-field>
+						</div>
+						<div class="input-field col s6">
+							<mat-form-field>
+								<input matInput (click)="endDate.open()" [matDatepicker]="endDate" [min]="minDate" [max]="maxDate" placeholder="End date"
+								 readonly>
+								<mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+								<mat-datepicker #endDate></mat-datepicker>
+							</mat-form-field>
+						</div>
+					</div>
+					<mat-form-field>
+						<input matInput placeholder="Location">
+					</mat-form-field>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<a (click)="toggleEventForm()" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+	</div>
 </div>

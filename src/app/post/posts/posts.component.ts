@@ -28,14 +28,16 @@ export class PostsComponent implements OnInit {
     private postService: PostService,
     private route: ActivatedRoute,
     private _flashMessagesService: FlashMessagesService
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.getPost();
+    this.route.params.subscribe(params => {
+      this.getPost(this.user._id);
+    });
   }
 
-  getPost() {
-    this.postService.getPost().subscribe((data) => {
+  getPost(userId) {
+    this.postService.getPost(userId).subscribe((data) => {
       this.posts = data['post'];
     });
   }
@@ -51,10 +53,10 @@ export class PostsComponent implements OnInit {
     }
   }
 
-  reloadMasonry(){
+  reloadMasonry() {
     this._masonry.layout();
     let element: HTMLElement = document.getElementById('reload') as HTMLElement;
-    setTimeout (() => {
+    setTimeout(() => {
       element.click();
     }, 100);
   }

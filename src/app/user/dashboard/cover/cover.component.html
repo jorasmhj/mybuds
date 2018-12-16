@@ -1,18 +1,10 @@
 <span *ngIf="user.photo">{{ user.photo }}</span>
 <div class="cover">
   <div class="img-holder">
-    <img
-      [src]="user.userImage || 'https://materializecss.com/images/yuna.jpg'"
-      alt=""
-      class="user-img"
-    />
-    <div
-      class="uploadprogress"
-      *ngIf="uploadPic"
-      [ngStyle]="{ width: 100 - uploadprogress + '%' }"
-    ></div>
+    <img [src]="user.userImage || 'https://materializecss.com/images/yuna.jpg'" alt="" class="user-img" />
+    <div class="uploadprogress" *ngIf="uploadPic" [ngStyle]="{ width: 100 - uploadprogress + '%' }"></div>
     <div class="notification">1</div>
-    <div class="pro-pic-upload" (click)="clickinp(pic)">
+    <div class="pro-pic-upload" (click)="clickinp(pic)" *ngIf="user._id == userService.user._id">
       <i class="material-icons">file_upload</i>
       <input type="file" multiple #pic class="hide" (change)="detectFiles($event)" />
     </div>

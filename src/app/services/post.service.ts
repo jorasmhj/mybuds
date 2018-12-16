@@ -5,12 +5,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PostService {
-  private baseUrl = 'http://localhost:3000/post/';
+  private baseUrl = 'https://mybuds-backend.herokuapp.com/post/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getPost() {
-    return this.http.get(this.baseUrl + '?token=' + this.getToken());
+  getPost(userId) {
+    console.log(userId);
+    return this.http.get(this.baseUrl + '?token=' + this.getToken() + '&userId=' + userId);
   }
 
   createPost(post) {
@@ -22,6 +23,17 @@ export class PostService {
 
   deletePost(postId) {
     return this.http.delete(this.baseUrl + postId + '?token=' + this.getToken());
+  }
+
+  reactPost(option) {
+    return this.http.post('https://mybuds-backend.herokuapp.com/post-react/', {
+      token: this.getToken(),
+      ...option
+    });
+  }
+
+  getReact(postId) {
+    return this.http.get(('https://mybuds-backend.herokuapp.com/post-react/' + postId + '/?token=' + this.getToken()));
   }
 
   getToken() {

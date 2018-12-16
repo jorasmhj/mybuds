@@ -2,17 +2,12 @@
   <div class="row">
     <div class="col s2">
       <div class="thumb-holder">
-        <img
-          alt=""
-          class="circle responsive-img thumb"
-          height="40"
-          [src]="
+        <img alt="" class="circle responsive-img thumb" height="40" [src]="
             post.user._id == userService.user._id
               ? userService.user.userImage
               : 'http://localhost:3000/' + post.user.userImage
           "
-          width="40"
-        />
+          width="40" />
         <span class="noti">2</span>
       </div>
     </div>
@@ -34,7 +29,29 @@
     </div>
   </div>
   <div class="row card-footer">
-    <div class="post-action"><i class="fas fa-share" (click)="ogShare(post.content)"></i></div>
+    <div class="post-action">
+      <div (mouseenter)="getReactors($event)" (mouseleave)="hideReactors($event)" [className]="post.liked ? 'animated bounce' : ''">
+        <i class="fas fa-plus" *ngIf="!post.liked else like" (click)="react()"></i>
+        <ng-template #like>
+          <i class="fas fa-check black-text" (click)="react()"></i>
+        </ng-template>
+        <ng-container *ngIf="showReactors && post.likesBy.length > 0">
+          <div class="reactors">
+            <ul>
+              <li *ngFor="let user of post.likesBy">
+                <a routerLink="/user/{{ user._id }}">{{ user.name }}</a>
+              </li>
+            </ul>
+          </div>
+        </ng-container>
+      </div>
+      <div>
+        <i class="fas fa-comments"></i>
+      </div>
+      <div>
+        <i class="fas fa-share" (click)="ogShare(post.content)"></i>
+      </div>
+    </div>
   </div>
   <div class="post-options" mat-button [matMenuTriggerFor]="menu">
     <i class="material-icons">more_vert</i>

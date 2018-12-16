@@ -14,6 +14,7 @@ export class SinglePostComponent implements OnInit {
   post;
   @Output()
   postRemove = new EventEmitter<any>();
+  showReactors: boolean;
   constructor(
     private postService: PostService,
     public userService: UserService,
@@ -27,7 +28,21 @@ export class SinglePostComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getPostReactions();
+  }
+
+  getPostReactions() {
+    this.postService.getReact(this.post._id).subscribe(
+      res => {
+        this.post.likesBy = res['likesBy'].map(by => { return { _id: by._id, name: by.name } });
+        this.post.liked = (this.post.likesBy.map(e => e._id).indexOf(this.userService.user._id) > -1) ? true : false;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
 
   ogShare(desc) {
     this.fb
@@ -54,7 +69,7 @@ export class SinglePostComponent implements OnInit {
             timeout: 4000
           });
         },
-        (err) => {}
+        (err) => { }
       );
   }
 
@@ -66,5 +81,41 @@ export class SinglePostComponent implements OnInit {
         timeout: 4000
       });
     });
+  }
+
+  react() {
+    let option = {
+      postId: this.post._id,
+      like: !this.post.liked
+    };
+    this.post.liked = !this.post.liked;
+    this.postService.reactPost(option).subscribe(
+      res => {
+        this.post.liked = res['postReact']['like'];
+        if (res['postReact']['like'] === true) {
+          this.post.likesBy.push({ _id: this.userService.user._id, name: this.userService.user.name });
+        }
+        else {
+          this.post.likesBy.splice(this.post.likesBy.map(e => e._id).indexOf(this.userService.user._id, 1));
+        }
+        let react = (res['postReact']['like']) ? 'Liked' : "Disliked";
+        this._flashMessagesService.show(`Post ${react}.`, {
+          cssClass: 'alert-success',
+          timeout: 4000
+        });
+      },
+      err => { console.log(err); }
+    )
+  }
+
+
+  getReactors(e) {
+    e.target.closest('.post-parent').style.zIndex = 100;
+    this.showReactors = true;
+  }
+
+  hideReactors(e) {
+    e.target.closest('.post-parent').style.zIndex = 0;
+    this.showReactors = false;
   }
 }

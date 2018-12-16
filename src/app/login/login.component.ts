@@ -1,10 +1,12 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { moveIn } from '../animation';
 import { MatSnackBar } from '@angular/material';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { MapsAPILoader } from '@agm/core';
+import { } from '@types/googlemaps';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,9 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./login.component.css'],
   animations: [moveIn()]
 })
+
 export class LoginComponent implements OnInit {
+  @ViewChild('search') public searchElement: ElementRef;
   @HostBinding('@moveIn')
   user: any = {};
   loginError: string;
@@ -24,10 +28,26 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private titleService: Title,
     public snackBar: MatSnackBar,
-    public _flashMessagesService: FlashMessagesService
+    public _flashMessagesService: FlashMessagesService,
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone
   ) { }
 
   ngOnInit() {
+    // this.mapsAPILoader.load().then(
+    //   (a) => {
+    //     let autocomplete = new google.maps.places.Autocomplete(this.searchElement.nativeElement, { types: ['address'] });
+    //     autocomplete.addListener("place_changed", () => {
+    //       this.ngZone.run(() => {
+    //         let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+    //         console.log(place);
+    //         if (place.geometry === undefined || place.geometry === null) {
+    //           return;
+    //         }
+    //       });
+    //     });
+    //   }
+    // )
     this.titleService.setTitle('Login');
     if (this.userService.isLoggedIn()) {
       this.router.navigate(['/dashboard']);

@@ -1,5 +1,6 @@
 .post {
   padding: 20px;
+  padding-bottom: 0px;
   position: relative;
   background: #fbfafb;
   color: #000;
@@ -64,9 +65,38 @@ img.thumb {
 
 .post-action i {
   color: #c4c4c4;
+  padding: 15px;
+}
+
+.post-action div{
+  float: left;
   cursor: pointer;
 }
 
-.post-action i:hover{
-  color: #000; 
+.post-action div:hover i{
+  color: #000;
+}
+
+.reactors{
+  position: absolute;
+  left: -5px;
+  margin: 0px;
+  padding: 0px !important;
+  text-align: center;
+  background: #000000d1;
+  color: #fff;
+  transform: translateX(-20px);
+  border-radius: 3px;
+  z-index: 100;
+  min-width: 150px;
+}
+
+.reactors a{
+  color: #fff;
+  font-size: 14px;
+}
+
+.reactors a:hover{
+  color:chocolate;
+  text-decoration: underline;
 }

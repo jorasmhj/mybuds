@@ -54,3 +54,17 @@ button {
   margin: 2px 5px;
   border-radius: 2px;
 }
+
+.event-form{
+  color: #000;
+  z-index: 1003;
+  display: block;
+  opacity: 1;
+  top: 10%;
+  transform: scaleX(1) scaleY(1);
+}
+
+input:not([type]) {
+  padding: 0px;
+  height: auto;
+}

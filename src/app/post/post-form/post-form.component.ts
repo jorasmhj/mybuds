@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 import { Post } from 'src/app/model/post';
-import { moveIn, fallIn } from 'src/app/animation';
+import { fallIn } from 'src/app/animation';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
@@ -16,11 +16,13 @@ export class PostFormComponent implements OnInit {
   @Output() layoutMasonry = new EventEmitter<any>();
   post: Post = <Post>{};
   posting: boolean;
+  showEventForm: boolean;
+  maxDate = new Date(Date.now());
 
-  constructor(private postService: PostService, private _flashMessagesService: FlashMessagesService) {}
+  constructor(private postService: PostService, private _flashMessagesService: FlashMessagesService) { }
 
   ngOnInit() {
-    this.post.photos=[];
+    this.post.photos = [];
   }
 
   detectFiles(event) {
@@ -58,5 +60,9 @@ export class PostFormComponent implements OnInit {
         }
       );
     }
+  }
+
+  toggleEventForm() {
+    this.showEventForm = !this.showEventForm;
   }
 }
