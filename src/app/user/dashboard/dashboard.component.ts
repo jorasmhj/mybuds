@@ -1,13 +1,13 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
-import { ActivatedRoute } from '@angular/router';
-import { Title } from '@angular/platform-browser';
-import { moveIn } from 'src/app/animation';
+import { Component, OnInit, HostBinding } from "@angular/core";
+import { UserService } from "src/app/services/user.service";
+import { ActivatedRoute } from "@angular/router";
+import { Title } from "@angular/platform-browser";
+import { moveIn } from "src/app/animation";
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  selector: "app-dashboard",
+  templateUrl: "./dashboard.component.html",
+  styleUrls: ["./dashboard.component.css"],
   animations: [moveIn()]
 })
 export class DashboardComponent implements OnInit {
@@ -18,11 +18,11 @@ export class DashboardComponent implements OnInit {
     private userService: UserService,
     private route: ActivatedRoute,
     private titleService: Title
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      let id = params['id'];
+      let id = params["id"];
       if (id) this.getUser(id);
       else this.getMe();
     });
@@ -30,30 +30,31 @@ export class DashboardComponent implements OnInit {
 
   changeUser() {
     localStorage.setItem(
-      'user',
+      "user",
       JSON.stringify({
         id: 1,
-        name: 'Saroj',
-        email: 'jorasmhj@gmail.com',
-        created_at: '2018-10-16 13:12:02',
-        updated_at: '2018-10-16 13:12:02'
+        name: "Saroj",
+        email: "jorasmhj@gmail.com",
+        created_at: "2018-10-16 13:12:02",
+        updated_at: "2018-10-16 13:12:02"
       })
     );
   }
 
   getMe() {
     return this.userService.me().subscribe(res => {
-      localStorage.setItem('user', JSON.stringify(res));
+      localStorage.setItem("user", JSON.stringify(res));
       this.user = res;
       this.titleService.setTitle(this.user.name);
     });
   }
 
   getUser(id) {
-    this.userService.getUser(id).subscribe(res => {
-      this.user = res;
-      this.titleService.setTitle(this.user.name);
-    },
+    this.userService.getUser(id).subscribe(
+      res => {
+        this.user = res;
+        this.titleService.setTitle(this.user.name);
+      },
       err => {
         console.log(err);
       }

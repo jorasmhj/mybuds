@@ -1,7 +1,8 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav mode="side">
     <ul class="center-align">
-      <ng-container *ngIf="!userService.isLoggedIn(); else: logUser">
+      <a [routerLink]="['payout']"> <li>Payout</li> </a>
+      <ng-container *ngIf="!userService.isLoggedIn(); else logUser">
         <a [routerLink]="['/']"> <li>Login</li> </a>
         <a [routerLink]="['signup']"> <li>Signup</li> </a>
       </ng-container>
@@ -15,11 +16,7 @@
 
   <mat-sidenav-content>
     <div class="hide-on-large-only sidenav-toggler">
-      <i
-        class="black-text material-icons"
-        mat-button
-        (click)="sidenav.toggle()"
-      >
+      <i class="black-text material-icons" mat-button (click)="sidenav.toggle()">
         menu
       </i>
     </div>

@@ -1,19 +1,17 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { PostService } from 'src/app/services/post.service';
-import { UserService } from 'src/app/services/user.service';
-import { FacebookService } from 'ngx-facebook';
-import { FlashMessagesService } from 'angular2-flash-messages';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { PostService } from "src/app/services/post.service";
+import { UserService } from "src/app/services/user.service";
+import { FacebookService } from "ngx-facebook";
+import { FlashMessagesService } from "angular2-flash-messages";
 
 @Component({
-  selector: 'app-single-post',
-  templateUrl: './single-post.component.html',
-  styleUrls: ['./single-post.component.css']
+  selector: "app-single-post",
+  templateUrl: "./single-post.component.html",
+  styleUrls: ["./single-post.component.css"]
 })
 export class SinglePostComponent implements OnInit {
-  @Input()
-  post;
-  @Output()
-  postRemove = new EventEmitter<any>();
+  @Input() post: any;
+  @Output() postRemove = new EventEmitter<any>();
   showReactors: boolean;
   constructor(
     private postService: PostService,
@@ -22,9 +20,9 @@ export class SinglePostComponent implements OnInit {
     private _flashMessagesService: FlashMessagesService
   ) {
     this.fb.init({
-      appId: '363472697851786',
+      appId: "363472697851786",
       xfbml: true,
-      version: 'v3.1'
+      version: "v3.1"
     });
   }
 
@@ -35,8 +33,10 @@ export class SinglePostComponent implements OnInit {
   getPostReactions() {
     this.postService.getReact(this.post._id).subscribe(
       res => {
-        this.post.likesBy = res['likesBy'].map(by => { return { _id: by._id, name: by.name } });
-        this.post.liked = (this.post.likesBy.map(e => e._id).indexOf(this.userService.user._id) > -1) ? true : false;
+        this.post.likesBy = res["likesBy"].map(by => {
+          return { _id: by._id, name: by.name };
+        });
+        this.post.liked = this.post.likesBy.map(e => e._id).indexOf(this.userService.user._id) > -1 ? true : false;
       },
       err => {
         console.log(err);
@@ -47,37 +47,36 @@ export class SinglePostComponent implements OnInit {
   ogShare(desc) {
     this.fb
       .ui({
-        method: 'share_open_graph',
-        action_type: 'og.shares',
+        method: "share_open_graph",
+        action_type: "og.shares",
         action_properties: JSON.stringify({
           object: {
-            'og:title': 'Health Feed',
-            'og:site_name': 'site_name',
-            'og:description': desc,
-            'og:image':
-              'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
-            'og:image:width': '100',
-            'og:image:height': '100'
+            "og:title": "Health Feed",
+            "og:site_name": "site_name",
+            "og:description": desc,
+            "og:image": "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png",
+            "og:image:width": "100",
+            "og:image:height": "100"
           }
         })
       })
       .then(
-        (success) => {
+        success => {
           console.log(success);
-          this._flashMessagesService.show('Post Shared.', {
-            cssClass: 'alert-success',
+          this._flashMessagesService.show("Post Shared.", {
+            cssClass: "alert-success",
             timeout: 4000
           });
         },
-        (err) => { }
+        err => {}
       );
   }
 
   removePost() {
     this.postRemove.emit(this.post);
-    this.postService.deletePost(this.post._id).subscribe((res) => {
-      this._flashMessagesService.show('Post Deleted.', {
-        cssClass: 'alert-success',
+    this.postService.deletePost(this.post._id).subscribe(res => {
+      this._flashMessagesService.show("Post Deleted.", {
+        cssClass: "alert-success",
         timeout: 4000
       });
     });
@@ -91,31 +90,31 @@ export class SinglePostComponent implements OnInit {
     this.post.liked = !this.post.liked;
     this.postService.reactPost(option).subscribe(
       res => {
-        this.post.liked = res['postReact']['like'];
-        if (res['postReact']['like'] === true) {
+        this.post.liked = res["postReact"]["like"];
+        if (res["postReact"]["like"] === true) {
           this.post.likesBy.push({ _id: this.userService.user._id, name: this.userService.user.name });
-        }
-        else {
+        } else {
           this.post.likesBy.splice(this.post.likesBy.map(e => e._id).indexOf(this.userService.user._id, 1));
         }
-        let react = (res['postReact']['like']) ? 'Liked' : "Disliked";
+        let react = res["postReact"]["like"] ? "Liked" : "Disliked";
         this._flashMessagesService.show(`Post ${react}.`, {
-          cssClass: 'alert-success',
+          cssClass: "alert-success",
           timeout: 4000
         });
       },
-      err => { console.log(err); }
-    )
+      err => {
+        console.log(err);
+      }
+    );
   }
 
-
   getReactors(e) {
-    e.target.closest('.post-parent').style.zIndex = 100;
+    e.target.closest(".post-parent").style.zIndex = 100;
     this.showReactors = true;
   }
 
   hideReactors(e) {
-    e.target.closest('.post-parent').style.zIndex = 0;
+    e.target.closest(".post-parent").style.zIndex = 0;
     this.showReactors = false;
   }
 }

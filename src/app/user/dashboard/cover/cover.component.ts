@@ -1,12 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
-import { ActivatedRoute } from '@angular/router';
-import { HttpEventType } from '@angular/common/http';
+import { Component, OnInit, Input } from "@angular/core";
+import { UserService } from "src/app/services/user.service";
+import { ActivatedRoute } from "@angular/router";
+import { HttpEventType } from "@angular/common/http";
 
 @Component({
-  selector: 'app-cover',
-  templateUrl: './cover.component.html',
-  styleUrls: ['./cover.component.css']
+  selector: "app-cover",
+  templateUrl: "./cover.component.html",
+  styleUrls: ["./cover.component.css"]
 })
 export class CoverComponent implements OnInit {
   @Input()
@@ -32,13 +32,13 @@ export class CoverComponent implements OnInit {
     this.uploadPic = true;
     this.uploadprogress = 0;
     this.userService.uploadPic(file).subscribe(
-      (events) => {
+      events => {
         if (events.type === HttpEventType.UploadProgress) {
           this.uploadprogress = (events.loaded / events.total) * 100;
         } else if (events.type === HttpEventType.Response) {
         }
       },
-      (error) => {
+      error => {
         console.log(error);
       }
     );

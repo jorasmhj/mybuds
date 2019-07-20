@@ -1,24 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { RouterModule, PreloadAllModules } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSnackBarModule, MatMenuModule, MatSidenavModule } from '@angular/material';
-import { FlashMessagesModule } from 'angular2-flash-messages';
-import { AgmCoreModule } from '@agm/core';
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
+import { RouterModule, PreloadAllModules } from '@angular/router'
+import { FormsModule } from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatSnackBarModule, MatMenuModule, MatSidenavModule } from '@angular/material'
+import { FlashMessagesModule } from 'angular2-flash-messages'
+import { AgmCoreModule } from '@agm/core'
 
-
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { DashboardComponent } from './user/dashboard/dashboard.component';
-import { AuthGuardService } from './auth-guard.service';
-import { CoverComponent } from './user/dashboard/cover/cover.component';
-import { ProjectComponent } from './project/project.component';
-import { PostModule } from './post/post.module';
+import { AppComponent } from './app.component'
+import { NavbarComponent } from './navbar/navbar.component'
+import { NotFoundComponent } from './not-found/not-found.component'
+import { LoginComponent } from './login/login.component'
+import { SignupComponent } from './signup/signup.component'
+import { DashboardComponent } from './user/dashboard/dashboard.component'
+import { AuthGuardService } from './auth-guard.service'
+import { CoverComponent } from './user/dashboard/cover/cover.component'
+import { ProjectComponent } from './project/project.component'
+import { PostModule } from './post/post.module'
+import { PayoutComponent } from './payout/payout.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +29,8 @@ import { PostModule } from './post/post.module';
     SignupComponent,
     DashboardComponent,
     CoverComponent,
-    ProjectComponent
+    ProjectComponent,
+    PayoutComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -74,6 +75,10 @@ import { PostModule } from './post/post.module';
           path: 'forgot-password',
           loadChildren: './forgot-password/forgot-password.module#ForgotPasswordModule'
         },
+        {
+          path: 'payout',
+          component: PayoutComponent
+        },
 
         { path: '**', component: NotFoundComponent }
       ],
@@ -84,4 +89,4 @@ import { PostModule } from './post/post.module';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

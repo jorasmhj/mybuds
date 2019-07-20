@@ -1,0 +1,61 @@
+<br />
+<br />
+<div class="row">
+  <div class="col s12 m4 offset-m4">
+    <form #form="ngForm">
+      <div class="input-field">
+        <select name="country" (change)="changeCountry($event.target.value)" class="select" required>
+          <option value="">Country</option>
+          <option *ngFor="let c of countries" [value]="c | json">{{ c.name }}</option>
+        </select>
+      </div>
+      <div *ngIf="country != ''" @fallIn>
+        <div class="input-field" *ngIf="branchIdRequired() === true" @fallIn>
+          <input type="text" id="branchId" name="branchId" #branchId="ngModel" [(ngModel)]="newAccount.branchId" required number />
+          <label for="branchId">{{
+            newAccount.country == 'US'
+              ? 'Routing Number'
+              : newAccount.country == 'AU'
+              ? 'BSB'
+              : newAccount.country == 'UK'
+              ? 'Short Code'
+              : newAccount.country == 'CA'
+              ? 'Transit Number'
+              : 'IFSC Code'
+          }}</label>
+        </div>
+        <div class="input-field" *ngIf="swiftRequired() === true" @fallIn>
+          <input type="text" id="swiftBic" name="swiftBic" #swiftBic="ngModel" [(ngModel)]="newAccount.swiftBic" required number />
+          <label for="swiftBic">SWIFT BIC Code</label>
+        </div>
+        <div class="input-field" *ngIf="country?.code === 'CA'" @fallIn>
+          <input type="text" id="bankId" name="bankId" #bankId="ngModel" [(ngModel)]="newAccount.bankId" required number />
+          <label for="bankId">Institution Code</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="bankAddress" name="bankAddress" #bankAddress="ngModel" [(ngModel)]="newAccount.bankAddress" required number />
+          <label for="bankAddress">Bank Address</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="bankCity" name="bankCity" #bankCity="ngModel" [(ngModel)]="newAccount.bankCity" required number />
+          <label for="bankCity">Bank City</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="accNum" name="accnum" #accnum="ngModel" [(ngModel)]="newAccount.accountNum" required />
+          <label for="accNum">Acount Number</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="holderName" name="holderName" #holderName="ngModel" [(ngModel)]="newAccount.accountHolderName" required />
+          <label for="holderName">Account Holder Name</label>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" type="submit" (click)="add()" [disabled]="country == '' || !form.valid">
+        Submit
+      </button>
+    </form>
+    <p style="color:#000">
+      {{ newAccount | json }}
+    </p>
+  </div>
+</div>

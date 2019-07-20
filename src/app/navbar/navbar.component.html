@@ -3,7 +3,8 @@
     <a routerLink="" class="black-text brand-logo">Explorer</a>
 
     <ul class="right hide-on-med-and-down black-text">
-      <ng-container *ngIf="!userService.isLoggedIn() else logUser">
+      <li routerLinkActive="active"><a [routerLink]="['payout']">Payout</a></li>
+      <ng-container *ngIf="!userService.isLoggedIn(); else logUser">
         <li routerLinkActive="active"><a [routerLink]="['/']">Login</a></li>
         <li routerLinkActive="active"><a [routerLink]="['signup']">SignUp</a></li>
       </ng-container>
@@ -12,9 +13,8 @@
         <li class="notify_bell">
           <i class="material-icons animated infinite swing delay-5s slow">notifications_none</i>
         </li>
-        <li routerLinkActive="active" mat-button [matMenuTriggerFor]="menu" style="cursor:pointer">&nbsp;{{
-          userService.user?.name | titlecase
-          }}
+        <li routerLinkActive="active" mat-button [matMenuTriggerFor]="menu" style="cursor:pointer">
+          &nbsp;{{ userService.user?.name | titlecase }}
           <i class="material-icons right">arrow_drop_down</i>
         </li>
         <mat-menu #menu="matMenu">
@@ -26,5 +26,5 @@
     </ul>
   </div>
 </nav>
-<br>
-<br>
+<br />
+<br />

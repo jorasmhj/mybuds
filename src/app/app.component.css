@@ -26,9 +26,11 @@
   cursor: pointer;
 }
 
-.main-content {
+/* .main-content {
   margin-top: 30px;
-}
+    transform: perspective(700px) rotatex(27deg);
+    transition: all 1s ease;
+} */
 
 .mat-drawer {
   background: #fff;
