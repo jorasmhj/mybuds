@@ -1,3 +1,4 @@
+import { FlashMessagesService } from 'angular2-flash-messages'
 import { PayoutService } from './payout.service'
 import { Component, OnInit } from '@angular/core'
 import { moveIn, fallIn } from '../animation'
@@ -13,14 +14,15 @@ export class PayoutComponent implements OnInit {
     { code: 'NP', currency: 'NPR', name: 'Nepal' },
     { code: 'AU', currency: 'AUD', name: 'Australia' },
     { code: 'CA', currency: 'CAD', name: 'Canada' },
-    { code: 'IN', currency: 'IND', name: 'India' },
+    { code: 'IN', currency: 'INR', name: 'India' },
     { code: 'US', currency: 'USD', name: 'United States' },
     { code: 'UK', currency: 'GBP', name: 'United Kingdom' }
   ]
   country: any = ''
   newAccount = {}
+  loading: boolean
 
-  constructor(private payoutService: PayoutService) {}
+  constructor(private payoutService: PayoutService, private _flashMessagesService: FlashMessagesService) {}
 
   ngOnInit() {}
 
@@ -55,12 +57,22 @@ export class PayoutComponent implements OnInit {
   }
 
   add() {
+    this.loading = true
     this.payoutService.addAccount(this.newAccount).subscribe(
       res => {
-        console.log(res)
+        this._flashMessagesService.show(res['message'], {
+          cssClass: 'alert-success',
+          timeout: 4000
+        })
+        this.loading = false
       },
       err => {
         console.log(err)
+        this._flashMessagesService.show(err['error']['message'], {
+          cssClass: 'alert-danger',
+          timeout: 4000
+        })
+        this.loading = false
       }
     )
   }

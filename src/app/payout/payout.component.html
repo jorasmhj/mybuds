@@ -50,12 +50,12 @@
         </div>
       </div>
 
-      <button class="btn btn-primary" type="submit" (click)="add()" [disabled]="country == '' || !form.valid">
+      <button class="btn btn-primary" type="submit" (click)="add()" [disabled]="country == '' || !form.valid || loading">
         Submit
       </button>
     </form>
-    <p style="color:#000">
+    <!-- <p style="color:#000">
       {{ newAccount | json }}
-    </p>
+    </p> -->
   </div>
 </div>

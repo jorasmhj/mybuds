@@ -154,6 +154,10 @@ input[type='text'] {
   background: rgb(41, 240, 140);
 }
 
+.alert-danger {
+  background: rgb(228, 36, 36);
+}
+
 @keyframes comeup {
   from {
     transform: translateY(20px);
@@ -165,28 +169,30 @@ input[type='text'] {
   }
 }
 
-
-.mat-form-field{
+.mat-form-field {
   width: 100%;
 }
 
-.mat-datepicker-content .mat-calendar-next-button, .mat-datepicker-content .mat-calendar-previous-button, .mat-datepicker-toggle, .mat-form-field-appearance-legacy .mat-form-field-label{
-  color:#000;
+.mat-datepicker-content .mat-calendar-next-button,
+.mat-datepicker-content .mat-calendar-previous-button,
+.mat-datepicker-toggle,
+.mat-form-field-appearance-legacy .mat-form-field-label {
+  color: #000;
 }
-.mat-form-field-appearance-legacy .mat-form-field-underline{
+.mat-form-field-appearance-legacy .mat-form-field-underline {
   background: #000 !important;
 }
 
-.mat-form-field-infix input:not([type]){
-  margin:0px;
+.mat-form-field-infix input:not([type]) {
+  margin: 0px;
   border: none;
 }
 
-.mat-form-field-infix input:not([type]):focus:not([readonly]){
-  border-bottom:none;
+.mat-form-field-infix input:not([type]):focus:not([readonly]) {
+  border-bottom: none;
   box-shadow: none;
 }
 
-.mat-form-field-flex button:focus{
+.mat-form-field-flex button:focus {
   background-color: transparent !important;
 }
