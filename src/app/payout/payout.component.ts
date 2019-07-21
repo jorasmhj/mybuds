@@ -1,7 +1,7 @@
-import { FlashMessagesService } from 'angular2-flash-messages';
-import { PayoutService } from './payout.service';
-import { Component, OnInit } from '@angular/core';
-import { moveIn, fallIn } from '../animation';
+import { FlashMessagesService } from 'angular2-flash-messages'
+import { PayoutService } from './payout.service'
+import { Component, OnInit } from '@angular/core'
+import { moveIn, fallIn } from '../animation'
 
 @Component({
     selector: 'app-payout',
@@ -17,10 +17,10 @@ export class PayoutComponent implements OnInit {
         { code: 'IN', currency: 'INR', name: 'India' },
         { code: 'US', currency: 'USD', name: 'United States' },
         { code: 'UK', currency: 'GBP', name: 'United Kingdom' }
-    ];
-    country: any = '';
-    newAccount = {};
-    loading: boolean;
+    ]
+    country: any = ''
+    newAccount = {}
+    loading: boolean
 
     constructor(private payoutService: PayoutService, private _flashMessagesService: FlashMessagesService) {}
 
@@ -28,52 +28,52 @@ export class PayoutComponent implements OnInit {
 
     changeCountry(country) {
         if (country == '') {
-            this.country = '';
-            return;
+            this.country = ''
+            return
         }
-        this.country = JSON.parse(country);
-        this.newAccount['country'] = this.country['code'];
-        this.newAccount['currency'] = this.country['currency'];
+        this.country = JSON.parse(country)
+        this.newAccount['country'] = this.country['code']
+        this.newAccount['currency'] = this.country['currency']
     }
 
     branchIdRequired() {
-        let countries = ['US', 'AU', 'UK', 'CA', 'IN'];
-        if (this.country['code'] !== 'CA') delete this.newAccount['bankId'];
+        let countries = ['US', 'AU', 'UK', 'CA', 'IN']
+        if (this.country['code'] !== 'CA') delete this.newAccount['bankId']
         if (this.country !== {} && countries.includes(this.country['code'])) {
-            return true;
+            return true
         }
-        delete this.newAccount['branchId'];
-        return false;
+        delete this.newAccount['branchId']
+        return false
     }
 
     swiftRequired() {
-        let countries = ['NP', 'IN'];
-        if (this.country['code'] !== 'CA') delete this.newAccount['bankId'];
+        let countries = ['NP', 'IN']
+        if (this.country['code'] !== 'CA') delete this.newAccount['bankId']
         if (this.country !== {} && countries.includes(this.country['code'])) {
-            return true;
+            return true
         }
-        delete this.newAccount['swiftBic'];
-        return false;
+        delete this.newAccount['swiftBic']
+        return false
     }
 
     add() {
-        this.loading = true;
+        this.loading = true
         this.payoutService.addAccount(this.newAccount).subscribe(
             res => {
                 this._flashMessagesService.show(res['message'], {
                     cssClass: 'alert-success',
                     timeout: 4000
-                });
-                this.loading = false;
+                })
+                this.loading = false
             },
             err => {
-                console.log(err);
+                console.log(err)
                 this._flashMessagesService.show(err['error']['message'], {
                     cssClass: 'alert-danger',
                     timeout: 4000
-                });
-                this.loading = false;
+                })
+                this.loading = false
             }
-        );
+        )
     }
 }

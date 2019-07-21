@@ -1,33 +1,35 @@
 <div class="green" *ngFor="let project of projects; let i = index">
-  {{ project.title }} - {{ project.date | date }}
-  <button (click)="edit(i)">Edit</button>
-  <button (click)="changeParent(0)">sasd</button>
+    {{ project.title }} - {{ project.date | date }}
+    <button (click)="edit(i)">Edit</button>
+    <button (click)="changeParent(0)">sasd</button>
 </div>
 
 <div class="row blue">
-  <form #form='ngForm'>
-    <ng-container *ngFor="let type of types">
-        <input type="checkbox" [value]="type.name" [checked]="type.checked" name="jobType"  (change)="updateCheck($event)"> 
-        <br>
-    </ng-container>
-  </form>
-  <button (click)="saveCheck()">Save</button>
-  <button (click)="cancleCheck()">Cancle</button>
-  <br>
-  <pre>{{types|json}}
+    <form #form="ngForm">
+        <ng-container *ngFor="let type of types">
+            <input type="checkbox" [value]="type.name" [checked]="type.checked" name="jobType" (change)="updateCheck($event)" />
+            <br />
+        </ng-container>
+    </form>
+    <button (click)="saveCheck()">Save</button>
+    <button (click)="cancleCheck()">Cancle</button>
+    <br />
+    <pre
+        >{{ types | json }}
 
-{{ checked|json }}
+{{ checked | json }}
 
-{{checkedAfter|json}}
-  </pre>
+{{ checkedAfter | json }}
+  </pre
+    >
 </div>
 
 <form #form="ngForm">
-  <input type="text" name="title" #title="ngModel" [(ngModel)]="project.title" required />
-  <small class="red-text" *ngIf="title.touched && title.errors?.required"> Required </small>
-  <input type="text" name="date" #date="ngModel" [(ngModel)]="project.date" required />
-  <small class="red-text" *ngIf="date.touched && date.errors?.required"> Required </small>
+    <input type="text" name="title" #title="ngModel" [(ngModel)]="project.title" required />
+    <small class="red-text" *ngIf="title.touched && title.errors?.required"> Required </small>
+    <input type="text" name="date" #date="ngModel" [(ngModel)]="project.date" required />
+    <small class="red-text" *ngIf="date.touched && date.errors?.required"> Required </small>
 
-  <br />
-  <button (click)="form.valid && submit(form)">Save</button>
+    <br />
+    <button (click)="form.valid && submit(form)">Save</button>
 </form>

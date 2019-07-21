@@ -1,44 +1,42 @@
 <br />
 <br />
 <div class="row">
-  <div class="col s12 m4 offset-m4">
-    <div class="row">
-      <form #form="ngForm" (ngSubmit)="form.valid && login(form)">
-        <div class="input-field col s12">
-          <input type="text" id="email" name="email" aria-describedby="emailHelp" #email="ngModel" [(ngModel)]="user.email"
-            required email />
-          <label for="email">Email address</label>
-          <ng-container *ngIf="email.invalid && (email.dirty || email.touched)">
-            <span *ngIf="email.errors?.required" class="red-text text-darken-1 helper-text">Email Required.</span>
-            <span *ngIf="email.errors?.pattern && email.touched" class="red-text text-darken-1 helper-text">Must be
-              email.</span>
-          </ng-container>
-        </div>
-        <div class="input-field col s12">
-          <input type="{{ showPassword }}" id="password" name="password" #password="ngModel" [(ngModel)]="user.password"
-            required minlength="5" />
-          <label for="password">Password</label>
-          <ng-container *ngIf="password.invalid && (password.dirty || password.touched)">
-            <span *ngIf="password.errors?.required" class="red-text text-darken-1 helper-text">Password Required.</span>
-            <span *ngIf="password.errors?.minlength && password.touched" class="red-text text-darken-1 helper-text">Password
-              must be atleast 5 character long.</span>
-          </ng-container>
-          <div class="input-field">
-            <button type="submit" class="btn btn-primary myColor" [disabled]="form.invalid || submit">
-              <span *ngIf="!submit; else: loading">Login</span>
-              <ng-template #loading>
-                <div class="lds-ellipsis">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
+    <div class="col s12 m4 offset-m4">
+        <div class="row">
+            <form #form="ngForm" (ngSubmit)="form.valid && login(form)">
+                <div class="input-field col s12">
+                    <input type="text" id="email" name="email" aria-describedby="emailHelp" #email="ngModel" [(ngModel)]="user.email" required email />
+                    <label for="email">Email address</label>
+                    <ng-container *ngIf="email.invalid && (email.dirty || email.touched)">
+                        <span *ngIf="email.errors?.required" class="red-text text-darken-1 helper-text">Email Required.</span>
+                        <span *ngIf="email.errors?.pattern && email.touched" class="red-text text-darken-1 helper-text">Must be email.</span>
+                    </ng-container>
                 </div>
-              </ng-template>
-            </button>
-            <a routerLink="forgot-password" [ngStyle]="{ 'margin-left': '20px' }"><span> Forgot password.</span></a>
-          </div>
+                <div class="input-field col s12">
+                    <input type="{{ showPassword }}" id="password" name="password" #password="ngModel" [(ngModel)]="user.password" required minlength="5" />
+                    <label for="password">Password</label>
+                    <ng-container *ngIf="password.invalid && (password.dirty || password.touched)">
+                        <span *ngIf="password.errors?.required" class="red-text text-darken-1 helper-text">Password Required.</span>
+                        <span *ngIf="password.errors?.minlength && password.touched" class="red-text text-darken-1 helper-text"
+                            >Password must be atleast 5 character long.</span
+                        >
+                    </ng-container>
+                    <div class="input-field">
+                        <button type="submit" class="btn btn-primary myColor" [disabled]="form.invalid || submit">
+                            <span *ngIf="!submit; else loading">Login</span>
+                            <ng-template #loading>
+                                <div class="lds-ellipsis">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </ng-template>
+                        </button>
+                        <a routerLink="forgot-password" [ngStyle]="{ 'margin-left': '20px' }"><span> Forgot password.</span></a>
+                    </div>
+                </div>
+            </form>
         </div>
-      </form>
     </div>
-  </div>
 </div>

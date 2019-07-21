@@ -1,12 +1,12 @@
-import { Component, OnInit, HostBinding, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { UserService } from '../services/user.service';
-import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
-import { moveIn } from '../animation';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { FlashMessagesService } from 'angular2-flash-messages';
-import { MapsAPILoader } from '@agm/core';
-import {} from '@types/googlemaps';
+import { Component, OnInit, HostBinding, ViewChild, ElementRef, NgZone } from '@angular/core'
+import { UserService } from '../services/user.service'
+import { Router } from '@angular/router'
+import { Title } from '@angular/platform-browser'
+import { moveIn } from '../animation'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { FlashMessagesService } from 'angular2-flash-messages'
+import { MapsAPILoader } from '@agm/core'
+import {} from '@types/googlemaps'
 
 @Component({
     selector: 'app-login',
@@ -15,12 +15,12 @@ import {} from '@types/googlemaps';
     animations: [moveIn()]
 })
 export class LoginComponent implements OnInit {
-    @ViewChild('search') public searchElement: ElementRef;
+    @ViewChild('search') public searchElement: ElementRef
     @HostBinding('@moveIn')
-    user: any = {};
-    loginError: string;
-    submit = false;
-    showPassword = 'password';
+    user: any = {}
+    loginError: string
+    submit = false
+    showPassword = 'password'
 
     constructor(
         private userService: UserService,
@@ -47,9 +47,9 @@ export class LoginComponent implements OnInit {
         //     });
         //   }
         // )
-        this.titleService.setTitle('Login');
+        this.titleService.setTitle('Login')
         if (this.userService.isLoggedIn()) {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/dashboard'])
         }
     }
 
@@ -57,35 +57,35 @@ export class LoginComponent implements OnInit {
         this.snackBar.open(message, action, {
             duration: 2000,
             verticalPosition: 'top'
-        });
+        })
     }
 
     toggleShowPassword() {
         if (this.showPassword === 'password') {
-            this.showPassword = 'text';
+            this.showPassword = 'text'
         } else {
-            this.showPassword = 'password';
+            this.showPassword = 'password'
         }
     }
 
     login(event) {
-        this.submit = true;
+        this.submit = true
         this.userService.login(this.user).subscribe(
             data => {
-                this.userService.loggedIn(data);
-                this.router.navigate(['/dashboard']);
-                this.submit = false;
+                this.userService.loggedIn(data)
+                this.router.navigate(['/dashboard'])
+                this.submit = false
                 this._flashMessagesService.show('Logged In.', {
                     cssClass: 'alert-success',
                     timeout: 4000
-                });
+                })
             },
             error => {
-                this.loginError = error.error.error;
-                this.openSnackBar(error.error.error, 'Close');
-                this.user.password = null;
-                this.submit = false;
+                this.loginError = error.error.error
+                this.openSnackBar(error.error.error, 'Close')
+                this.user.password = null
+                this.submit = false
             }
-        );
+        )
     }
 }

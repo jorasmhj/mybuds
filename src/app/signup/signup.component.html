@@ -1,37 +1,35 @@
-<br>
-<br>
+<br />
+<br />
 <div class="row">
-  <div class="col m6 offset-m3">
-    <form #form="ngForm" (ngSubmit)="form.valid && signUp(form)">
-
-      <div class="input-field col s6">
-        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="user.name" required>
-        <label for="name">Name</label>
-      </div>
-      <div class="input-field col s6">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" required email>
-      </div>
-      <div class="input-field col s12">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" required
-          minlength="5">
-      </div>
-      <div class="input-field col s12">
-        <label for="password">Confirm Password</label>
-        <input type="password" class="form-control" id="confirmPassword" name="conformPassword" [(ngModel)]="conformPassword">
-      </div>
-      <button type="submit" class="btn btn-primary myColor" [disabled]="form.invalid || submit">
-        <span *ngIf="!submit; else: loading">Sign Up</span>
-        <ng-template #loading>
-          <div class="lds-ellipsis">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </ng-template>
-      </button>
-    </form>
-  </div>
+    <div class="col m6 offset-m3">
+        <form #form="ngForm" (ngSubmit)="form.valid && signUp(form)">
+            <div class="input-field col s6">
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="user.name" required />
+                <label for="name">Name</label>
+            </div>
+            <div class="input-field col s6">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email" required email />
+            </div>
+            <div class="input-field col s12">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" required minlength="5" />
+            </div>
+            <div class="input-field col s12">
+                <label for="password">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" name="conformPassword" [(ngModel)]="conformPassword" />
+            </div>
+            <button type="submit" class="btn btn-primary myColor" [disabled]="form.invalid || submit">
+                <span *ngIf="!submit; else loading">Sign Up</span>
+                <ng-template #loading>
+                    <div class="lds-ellipsis">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </ng-template>
+            </button>
+        </form>
+    </div>
 </div>

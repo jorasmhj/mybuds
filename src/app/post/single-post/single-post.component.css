@@ -1,102 +1,101 @@
 .post {
-  padding: 20px;
-  padding-bottom: 0px;
-  position: relative;
-  background: #fbfafb;
-  color: #000;
+    padding: 20px;
+    padding-bottom: 0px;
+    position: relative;
+    background: #fbfafb;
+    color: #000;
 }
 
 img.thumb {
-  width: 50px;
-  max-width: 50px !important;
-  height: 50px;
-  object-fit: cover;
+    width: 50px;
+    max-width: 50px !important;
+    height: 50px;
+    object-fit: cover;
 }
 
 .post-user a {
-  color: #000;
-  font-size: 16px;
-  font-weight: 600;
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .card-content {
-  padding: 5px 0px;
-  word-wrap: break-word;
+    padding: 5px 0px;
+    word-wrap: break-word;
 }
 
 .post-time {
-  color: #949494;
-  font-size: 14px;
+    color: #949494;
+    font-size: 14px;
 }
 
 .thumb-holder {
-  position: relative;
+    position: relative;
 }
 
 .thumb-holder .noti {
-  position: absolute;
-  right: -15px;
-  bottom: 0;
-  background: #ffd400;
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  text-align: center;
-  font-size: 11px;
-  font-weight: bold;
+    position: absolute;
+    right: -15px;
+    bottom: 0;
+    background: #ffd400;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
 }
 
 .post-options {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  color: #adadad;
-  cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #adadad;
+    cursor: pointer;
 }
 
 .post-options:hover {
-  color: #000;
+    color: #000;
 }
 
-
-.post-action{
-  padding: 0px 15px;
+.post-action {
+    padding: 0px 15px;
 }
 
 .post-action i {
-  color: #c4c4c4;
-  padding: 15px;
+    color: #c4c4c4;
+    padding: 15px;
 }
 
-.post-action div{
-  float: left;
-  cursor: pointer;
+.post-action div {
+    float: left;
+    cursor: pointer;
 }
 
-.post-action div:hover i{
-  color: #000;
+.post-action div:hover i {
+    color: #000;
 }
 
-.reactors{
-  position: absolute;
-  left: -5px;
-  margin: 0px;
-  padding: 0px !important;
-  text-align: center;
-  background: #000000d1;
-  color: #fff;
-  transform: translateX(-20px);
-  border-radius: 3px;
-  z-index: 100;
-  min-width: 150px;
+.reactors {
+    position: absolute;
+    left: -5px;
+    margin: 0px;
+    padding: 0px !important;
+    text-align: center;
+    background: #000000d1;
+    color: #fff;
+    transform: translateX(-20px);
+    border-radius: 3px;
+    z-index: 100;
+    min-width: 150px;
 }
 
-.reactors a{
-  color: #fff;
-  font-size: 14px;
+.reactors a {
+    color: #fff;
+    font-size: 14px;
 }
 
-.reactors a:hover{
-  color:chocolate;
-  text-decoration: underline;
+.reactors a:hover {
+    color: chocolate;
+    text-decoration: underline;
 }

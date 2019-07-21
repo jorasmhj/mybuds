@@ -1,9 +1,9 @@
 /* @import '~ng-masonry-grid/ng-masonry-grid.css'; */
 
 .stamp {
-  position: absolute;
-  top: 0 !important;
-  left: 0 !important;
+    position: absolute;
+    top: 0 !important;
+    left: 0 !important;
 }
 
 /* ng-masonry-grid-item[_ngcontent-c7] {

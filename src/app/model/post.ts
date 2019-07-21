@@ -1,7 +1,7 @@
 export class Post {
-    id: number;
-    description: string;
-    photos: string[];
-    likes: string[];
-    liked: boolean;
+    id: number
+    description: string
+    photos: string[]
+    likes: string[]
+    liked: boolean
 }

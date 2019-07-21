@@ -1,179 +1,179 @@
 .cover {
-  margin-bottom: 10px;
-  color: #000;
-  overflow: hidden;
-  width: 100%;
-  overflow: visible;
-  height: 12em;
+    margin-bottom: 10px;
+    color: #000;
+    overflow: hidden;
+    width: 100%;
+    overflow: visible;
+    height: 12em;
 }
 
 .notification {
-  position: absolute;
-  bottom: 95%;
-  width: 50px;
-  height: 50px;
-  content: '1';
-  left: 95%;
-  background: orange;
-  z-index: 1;
-  border-radius: 40px 40px 40px 0px;
-  text-align: center;
-  padding: 10px;
-  font-size: 20px;
-  box-shadow: 1px 2px 3px #000;
-  font-weight: bold;
+    position: absolute;
+    bottom: 95%;
+    width: 50px;
+    height: 50px;
+    content: '1';
+    left: 95%;
+    background: orange;
+    z-index: 1;
+    border-radius: 40px 40px 40px 0px;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    box-shadow: 1px 2px 3px #000;
+    font-weight: bold;
 }
 
 .img-holder {
-  height: 100%;
-  padding: 4px;
-  border-radius: 5px;
-  border: 8px solid orange;
-  float: left;
-  position: relative;
+    height: 100%;
+    padding: 4px;
+    border-radius: 5px;
+    border: 8px solid orange;
+    float: left;
+    position: relative;
 }
 
 .user-img {
-  border: 1em solid;
-  height: 100%;
+    border: 1em solid;
+    height: 100%;
 }
 
 .cover-pic {
-  height: 250px;
-  border: 1px solid #eee;
+    height: 250px;
+    border: 1px solid #eee;
 }
 
 .cover-menu {
-  height: 60px;
-  background: #fff;
-  border: 1px solid rgb(204, 204, 204);
-  position: relative;
+    height: 60px;
+    background: #fff;
+    border: 1px solid rgb(204, 204, 204);
+    position: relative;
 }
 
 .cover-img {
-  height: 100%;
-  width: 80%;
-  background-size: cover !important;
+    height: 100%;
+    width: 80%;
+    background-size: cover !important;
 }
 
 .pro-pic-holder2 {
-  width: 115px;
-  height: 115px;
-  position: absolute;
-  left: 20px;
-  background: url('https://mybuds.000webhostapp.com/uploads/avatars/1497092072.png');
-  background-size: contain;
-  bottom: 10px;
-  border-radius: 100%;
+    width: 115px;
+    height: 115px;
+    position: absolute;
+    left: 20px;
+    background: url('https://mybuds.000webhostapp.com/uploads/avatars/1497092072.png');
+    background-size: contain;
+    bottom: 10px;
+    border-radius: 100%;
 }
 
 .username {
-  position: relative;
-  left: 122px;
-  width: 200px;
-  top: 23px;
-  color: #fff;
-  text-shadow: 1px 2px 3px #000;
+    position: relative;
+    left: 122px;
+    width: 200px;
+    top: 23px;
+    color: #fff;
+    text-shadow: 1px 2px 3px #000;
 }
 
 .username a {
-  color: #fff;
-  font-size: 25px;
-  font-weight: 500;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 500;
 }
 
 .cover-menu ul {
-  padding: 20px 0px;
-  margin-left: 135px;
+    padding: 20px 0px;
+    margin-left: 135px;
 }
 
 .cover-menu ul li {
-  display: inline;
-  margin-right: -4px;
-  color: #bebebe;
+    display: inline;
+    margin-right: -4px;
+    color: #bebebe;
 }
 
 .cover-menu ul li a {
-  color: #bebebe;
-  padding: 20px;
-  border-right: 1px solid #dddbdb;
-  transition: all 0.1s ease-in-out;
+    color: #bebebe;
+    padding: 20px;
+    border-right: 1px solid #dddbdb;
+    transition: all 0.1s ease-in-out;
 }
 
 .user-info {
-  margin-left: 25px;
-  position: relative;
-  height: 100%;
-  width: 71.5%;
+    margin-left: 25px;
+    position: relative;
+    height: 100%;
+    width: 71.5%;
 }
 
 .user-overview {
-  position: absolute;
-  width: 100%;
-  font-weight: bold;
-  bottom: 20%;
+    position: absolute;
+    width: 100%;
+    font-weight: bold;
+    bottom: 20%;
 }
 
 .user-name {
-  font-size: 39px;
-  font-weight: bold;
-  padding: 0px;
-  margin: 0px;
-  line-height: 1;
+    font-size: 39px;
+    font-weight: bold;
+    padding: 0px;
+    margin: 0px;
+    line-height: 1;
 }
 
 .material-icons {
-  float: left;
+    float: left;
 }
 
 .overview-item {
-  position: relative;
+    position: relative;
 }
 
 .overview-number {
-  font-size: 17px;
-  font-weight: bold;
-  padding-left: 5px;
+    font-size: 17px;
+    font-weight: bold;
+    padding-left: 5px;
 }
 
 button {
-  font-size: 12px;
-  border-radius: 0px;
-  margin-top: -15px;
-  transform: scale(0.95);
+    font-size: 12px;
+    border-radius: 0px;
+    margin-top: -15px;
+    transform: scale(0.95);
 }
 
 @media (max-width: 750px) {
-  .cover {
-    height: 7em;
-  }
-  .img-holder {
-    height: 100px;
-  }
+    .cover {
+        height: 7em;
+    }
+    .img-holder {
+        height: 100px;
+    }
 
-  .user-info {
-    position: relative;
-    width: auto;
-  }
+    .user-info {
+        position: relative;
+        width: auto;
+    }
 
-  .user-name {
-    font-size: 29px;
-  }
-  .user-overview {
-    font-size: 11px;
-    position: static;
-    margin-top: 20px;
-  }
+    .user-name {
+        font-size: 29px;
+    }
+    .user-overview {
+        font-size: 11px;
+        position: static;
+        margin-top: 20px;
+    }
 
-  .notification {
-    width: 35px;
-    height: 35px;
-    font-size: 15px;
-  }
+    .notification {
+        width: 35px;
+        height: 35px;
+        font-size: 15px;
+    }
 }
 
-.pro-pic-upload{
-  position: absolute;
+.pro-pic-upload {
+    position: absolute;
     left: 0;
     text-align: center;
     top: 0;
@@ -184,22 +184,22 @@ button {
     cursor: pointer;
 }
 
-.pro-pic-upload:hover{
-  opacity: 1;
+.pro-pic-upload:hover {
+    opacity: 1;
 }
 
-.pro-pic-upload i{
-  color:#fff;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  position: relative;
+.pro-pic-upload i {
+    color: #fff;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: relative;
 }
 
-.uploadprogress{
-  height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  background: #000000d6;
+.uploadprogress {
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #000000d6;
 }
