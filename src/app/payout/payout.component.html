@@ -41,6 +41,10 @@
                     <label for="bankCity">Bank City</label>
                 </div>
                 <div class="input-field">
+                    <input type="text" id="bankRegion" name="bankRegion" #bankRegion="ngModel" [(ngModel)]="newAccount.bankRegion" required number />
+                    <label for="bankRegion">Bank Region</label>
+                </div>
+                <div class="input-field">
                     <input type="text" id="accNum" name="accnum" #accnum="ngModel" [(ngModel)]="newAccount.accountNum" required />
                     <label for="accNum">Acount Number</label>
                 </div>

@@ -4,8 +4,8 @@
 
 export const environment = {
     production: false,
-    // apiUrl: 'http://192.168.100.11:3000'
-    apiUrl: 'https://mybuds-backend.herokuapp.com'
+    apiUrl: 'http://localhost:3000'
+    // apiUrl: 'https://mybuds-backend.herokuapp.com'
 }
 
 /*

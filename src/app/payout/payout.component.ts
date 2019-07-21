@@ -11,12 +11,12 @@ import { moveIn, fallIn } from '../animation'
 })
 export class PayoutComponent implements OnInit {
     countries = [
-        { code: 'NP', currency: 'NPR', name: 'Nepal' },
-        { code: 'AU', currency: 'AUD', name: 'Australia' },
-        { code: 'CA', currency: 'CAD', name: 'Canada' },
-        { code: 'IN', currency: 'INR', name: 'India' },
-        { code: 'US', currency: 'USD', name: 'United States' },
-        { code: 'UK', currency: 'GBP', name: 'United Kingdom' }
+        { code: 'NP', currency: 'NPR', name: 'Nepal', postalCode: '4470' },
+        { code: 'AU', currency: 'AUD', name: 'Australia', postalCode: '4470' },
+        { code: 'CA', currency: 'CAD', name: 'Canada', postalCode: 'k1a0b1' },
+        { code: 'IN', currency: 'INR', name: 'India', postalCode: '4470' },
+        { code: 'US', currency: 'USD', name: 'United States', postalCode: '44712' },
+        { code: 'UK', currency: 'GBP', name: 'United Kingdom', postalCode: '44712' }
     ]
     country: any = ''
     newAccount = {}
@@ -34,6 +34,7 @@ export class PayoutComponent implements OnInit {
         this.country = JSON.parse(country)
         this.newAccount['country'] = this.country['code']
         this.newAccount['currency'] = this.country['currency']
+        this.newAccount['postalCode'] = this.country['postalCode']
     }
 
     branchIdRequired() {
