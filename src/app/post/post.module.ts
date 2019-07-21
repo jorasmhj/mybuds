@@ -10,19 +10,19 @@ import { MatMenuModule, MatDatepickerModule, MatFormFieldModule, MatNativeDateMo
 import { FacebookModule } from 'ngx-facebook';
 
 @NgModule({
-	declarations: [PostFormComponent, PostsComponent, SinglePostComponent],
-	imports: [
-		CommonModule,
-		FormsModule,
-		FacebookModule.forRoot(),
-		NgMasonryGridModule,
-		RouterModule,
-		MatMenuModule,
-		MatDatepickerModule,
-		MatFormFieldModule,
-		MatNativeDateModule,
-		MatInputModule
-	],
-	exports: [PostFormComponent, PostsComponent, SinglePostComponent],
+    declarations: [PostFormComponent, PostsComponent, SinglePostComponent],
+    imports: [
+        CommonModule,
+        FormsModule,
+        FacebookModule.forRoot(),
+        NgMasonryGridModule,
+        RouterModule,
+        MatMenuModule,
+        MatDatepickerModule,
+        MatFormFieldModule,
+        MatNativeDateModule,
+        MatInputModule
+    ],
+    exports: [PostFormComponent, PostsComponent, SinglePostComponent]
 })
-export class PostModule { } 
+export class PostModule {}
